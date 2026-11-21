@@ -6,6 +6,8 @@
 <title>Lotérica da Avenida — Pirassununga/SP</title>
 <meta name="description" content="Lotérica da Avenida (Vilela &amp; Granhani), na Av. 6 de Agosto, 14, em Pirassununga/SP. Horário, bolões e palpite da sorte.">
 <meta name="theme-color" content="#163A8F">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -48,6 +50,24 @@ h1{margin:0 0 16px;font-size:clamp(38px,7vw,64px);line-height:1.04}
 .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:18px;border-radius:999px;padding:6px 14px;background:#E3F7EA;color:#0E7A3E;align-self:flex-start}
 .status.off{background:#FDE8DD;color:#9A3412}
 .status i{width:10px;height:10px;border-radius:50%;background:currentColor;display:block}
+.hero .brand{margin-bottom:26px;padding-right:64px}.hero .brand b{font-size:24px;white-space:nowrap}.hero .w{padding-top:22px}
+.hero{border-top:0}
+section{scroll-margin-top:16px}
+.pula{position:absolute;left:-999px;top:8px;background:#fff;color:#163A8F;padding:10px 16px;border-radius:8px;font-weight:700;z-index:60}
+.pula:focus{left:8px}
+.mbtn{position:fixed;top:14px;right:14px;z-index:40;width:52px;height:52px;border-radius:14px;border:0;background:#fff;color:#163A8F;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(20,33,61,.25)}
+.mbtn:focus-visible,.gx:focus-visible{outline:3px solid #EE7B3D;outline-offset:2px}
+.fundo{position:fixed;inset:0;background:rgba(20,33,61,.55);z-index:45}
+.gaveta{position:fixed;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;z-index:50;padding:18px 20px;display:flex;flex-direction:column;gap:4px;overflow:auto;transform:translateX(100%);transition:transform .22s ease}
+.gaveta.ab{transform:none}
+.gaveta[hidden]{display:none}
+.gtop{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.gtop b{font-family:Outfit,Inter,sans-serif;font-size:20px;flex:1;line-height:1.15}
+.gx{width:48px;height:48px;border:0;background:#F1ECE0;border-radius:12px;color:#14213D;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.gaveta a{display:flex;align-items:center;min-height:56px;padding:0 14px;border-radius:12px;color:#14213D;font-weight:700;font-size:20px;text-decoration:none}
+.gaveta a:hover,.gaveta a:focus{background:#EAF0FB;color:#163A8F}
+.ginfo{margin-top:auto;padding:16px 14px 6px;border-top:1px solid #E6DDCB;color:#4A5468;font-size:17px;line-height:1.5}
+@media(prefers-reduced-motion:reduce){.gaveta{transition:none}}
 section.w{padding-top:56px;padding-bottom:10px}
 h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .sub{margin:0 0 26px;color:#4A5468}
@@ -89,15 +109,26 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 </style>
 </head>
 <body>
-<header><div class="w top">
-  <div class="brand"><img src="logo.svg" width="52" height="52" alt="" style="display:block">
-  <div><b>Lotérica da Avenida</b><small>Vilela &amp; Granhani · Pirassununga/SP</small></div></div>
-  <nav aria-label="Navegação principal"><a href="#boloes">Bolões</a><a href="#trevo">Trevo da sorte</a><a href="#onde">Onde estamos</a></nav>
-</div></header>
+<a class="pula" href="#boloes">Pular para o conteúdo</a>
+<button type="button" class="mbtn" id="mbtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="gaveta">
+  <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+</button>
+<div class="fundo" id="fundo" hidden></div>
+<nav class="gaveta" id="gaveta" aria-label="Menu" hidden>
+  <div class="gtop"><img src="logo.svg" width="44" height="44" alt=""><b>Lotérica da Avenida</b>
+    <button type="button" class="gx" id="gx" aria-label="Fechar menu"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
+  <a href="#boloes">Bolões</a>
+  <a href="#trevo">Trevo da sorte</a>
+  <a href="#onde">Onde estamos</a>
+  <a href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a>
+  <a href="https://www.instagram.com/lotoavenidapirassununga/" target="_blank" rel="noopener">Instagram</a>
+  <div class="ginfo">Seg a sex: 8h às 17h30<br>Sábado: 8h às 12h<br>Av. 6 de Agosto, 14</div>
+</nav>
 
 <div class="hero"><div class="w">
   <div>
-    <p class="eye">Lotérica credenciada Caixa · Pirassununga/SP</p>
+    <div class="brand"><img src="logo.svg" width="52" height="52" alt="" style="display:block"><div><b>Lotérica da Avenida</b><small>Pirassununga/SP</small></div></div>
+    <p class="eye">Lotérica credenciada Caixa</p>
     <h1>A sorte passa pela Avenida.</h1>
     <p class="lead">Todas as loterias da Caixa, bolões oficiais e conferência do seu bilhete. Na Av. 6 de Agosto, 14, em Pirassununga.</p>
     <div class="btns"><a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a><a class="btn s" href="#onde">Como chegar</a></div>
@@ -191,6 +222,13 @@ var st=document.getElementById("status");document.getElementById("statusTxt").te
   }
   get(0);
 })();
+
+(function(){var b=document.getElementById("mbtn"),g=document.getElementById("gaveta"),f=document.getElementById("fundo"),x=document.getElementById("gx");
+function abre(){g.hidden=false;f.hidden=false;requestAnimationFrame(function(){g.classList.add("ab");});b.setAttribute("aria-expanded","true");document.body.style.overflow="hidden";x.focus();}
+function fecha(){g.classList.remove("ab");f.hidden=true;b.setAttribute("aria-expanded","false");document.body.style.overflow="";setTimeout(function(){g.hidden=true;},230);b.focus();}
+b.addEventListener("click",abre);x.addEventListener("click",fecha);f.addEventListener("click",fecha);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!g.hidden)fecha();});
+Array.prototype.forEach.call(g.querySelectorAll("a"),function(a){a.addEventListener("click",fecha);});})();
 </script>
 </body>
 </html>
