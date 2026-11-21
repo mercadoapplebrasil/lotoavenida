@@ -150,7 +150,7 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 </div>
 <div class="faixas" aria-label="Faixas de prêmio da Mega-Sena"><div class="w">
   <div class="cd" id="cd" hidden>
-    <p class="cdl" id="cdL">Pedidos de bolão da Mega-Sena fecham em</p>
+    <p class="cdl" id="cdL">Compra de bolão da Mega-Sena fecha em</p>
     <div class="cdn" id="cdN" role="timer" aria-live="off"><div><b id="cdD">0</b><span>dias</span></div><div><b id="cdH">00</b><span>horas</span></div><div><b id="cdM">00</b><span>min</span></div><div><b id="cdS">00</b><span>seg</span></div></div>
     <p class="cds" id="cdS2"></p>
     <a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Garantir minha cota</a>
@@ -231,9 +231,9 @@ var CD=(function(){
     var fecha=alvo-MIN15,loc=new Date(alvo-3*3600000),dn=["domingo","segunda","terça","quarta","quinta","sexta","sábado"][loc.getUTCDay()];
     var quando=dn+", "+z(loc.getUTCDate())+"/"+z(loc.getUTCMonth()+1)+", às "+loc.getUTCHours()+"h";
     var falta=fecha-now,fechado=falta<=0;if(fechado)falta=alvo-now;
-    document.getElementById("cdL").textContent=fechado?"Pedidos encerrados. Sorteio em":"Pedidos de bolão da Mega-Sena fecham em";
+    document.getElementById("cdL").textContent=fechado?"Compra de bolão encerrada. Sorteio em":"Compra de bolão da Mega-Sena fecha em";
     var s=Math.floor(falta/1000);document.getElementById("cdD").textContent=Math.floor(s/86400);document.getElementById("cdD").nextElementSibling.textContent=Math.floor(s/86400)===1?"dia":"dias";document.getElementById("cdH").textContent=z(Math.floor(s%86400/3600));document.getElementById("cdM").textContent=z(Math.floor(s%3600/60));document.getElementById("cdS").textContent=z(s%60);
-    document.getElementById("cdS2").textContent="Sorteio "+quando+". Pedidos até 15 minutos antes.";box.hidden=false;}
+    document.getElementById("cdS2").textContent="Sorteio "+quando+". Compra de bolão até 15 minutos antes.";box.hidden=false;}
   tick();setInterval(tick,1000);
   return {set:function(s){var t=daData(s);if(t&&t>Date.now()){alvo=t;tick();}}};
 })();
