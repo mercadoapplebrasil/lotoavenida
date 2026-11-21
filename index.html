@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lotérica da Avenida — Pirassununga/SP</title>
-<meta name="description" content="Lotérica da Avenida (Vilela & Granhani), na Av. 6 de Agosto, 14, em Pirassununga/SP. Horário, sorteios da semana, bolões e onde receber seu prêmio.">
+<meta name="description" content="Lotérica da Avenida (Vilela &amp; Granhani), na Av. 6 de Agosto, 14, em Pirassununga/SP. Horário, bolões, palpite da sorte e onde receber seu prêmio.">
 <meta name="theme-color" content="#163A8F">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="Lotérica Avenida">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lotérica da Avenida — Pirassununga/SP">
-<meta property="og:description" content="Horário, sorteios da semana, bolões e onde receber seu prêmio.">
+<meta property="og:description" content="Horário, bolões, palpite da sorte e onde receber seu prêmio.">
 <meta property="og:url" content="https://lotoavenida.com.br/">
 <meta property="og:image" content="https://lotoavenida.com.br/icon-512.png">
 <meta property="og:locale" content="pt_BR">
@@ -52,13 +52,20 @@ section.w{padding-top:56px;padding-bottom:10px}
 h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .sub{margin:0 0 26px;color:#4A5468}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.dia{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:18px 20px}
-.dia b{font-family:Outfit,Inter,sans-serif;font-size:24px;display:block;margin-bottom:8px}
-.dia.hoje{border:3px solid #EE7B3D}
-.dia .tag{display:inline-block;font-size:14px;font-weight:700;background:#EE7B3D;color:#14213D;border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:middle}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:16px;font-weight:700;color:#fff;border-radius:8px;padding:5px 10px}
-.dia .mut{font-size:16px;color:#4A5468;margin-top:8px}
+.trevo{background:#fff;border:1px solid #E6DDCB;border-radius:20px;padding:34px 22px;text-align:center}
+.trevo .sub{margin-bottom:20px}
+.tbtn{display:inline-flex;flex-direction:column;align-items:center;gap:12px;background:none;border:0;cursor:pointer;font:inherit;color:#163A8F;font-weight:700;font-size:22px;padding:8px 16px;border-radius:16px}
+.tbtn span{background:#EE7B3D;color:#14213D;border-radius:12px;padding:14px 28px;min-height:56px;display:flex;align-items:center}
+.tbtn:hover span{background:#F58E55}
+.tbtn:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
+.tbtn.gira img{animation:gira .7s ease-out}
+@keyframes gira{to{transform:rotate(360deg)}}
+.bolas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px;min-height:64px}
+.bola{width:64px;height:64px;border-radius:50%;background:#0E7A3E;color:#fff;font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center;animation:pop .35s ease-out both}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.tnota{margin:18px auto 0;max-width:520px}
+@media(prefers-reduced-motion:reduce){.tbtn.gira img,.bola{animation:none}}
+@media(max-width:520px){.bolas{max-width:250px;margin-left:auto;margin-right:auto}}
 .bol{background:#163A8F;color:#fff;border-radius:20px;padding:34px 26px;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
 .bol h2{font-size:clamp(30px,5vw,44px)}
 .bol p{margin:0;color:#DCE4F7}
@@ -78,7 +85,7 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 <header><div class="w top">
   <div class="brand"><img src="logo.svg" width="52" height="52" alt="" style="display:block">
   <div><b>Lotérica da Avenida</b><small>Vilela &amp; Granhani · Pirassununga/SP</small></div></div>
-  <nav aria-label="Navegação principal"><a href="#sorteios">Sorteios</a><a href="#boloes">Bolões</a><a href="#premio">Recebeu prêmio?</a><a href="#onde">Onde estamos</a></nav>
+  <nav aria-label="Navegação principal"><a href="#trevo">Trevo da sorte</a><a href="#boloes">Bolões</a><a href="#premio">Recebeu prêmio?</a><a href="#onde">Onde estamos</a></nav>
 </div></header>
 
 <div class="hero"><div class="w">
@@ -97,10 +104,17 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 </div></div>
 
 <main>
-<section class="w" id="sorteios">
-  <h2>Sorteios da semana</h2>
-  <p class="sub">Sorteios às 21h de segunda a sexta e às 11h no domingo. Sábado não tem sorteio.</p>
-  <div class="grid" id="semana"></div>
+<section class="w" id="trevo">
+  <div class="trevo">
+    <h2>Trevo da sorte</h2>
+    <p class="sub">Toque no trevo e receba um palpite de 6 dezenas para a Mega-Sena.</p>
+    <button type="button" class="tbtn" id="tbtn" aria-label="Gerar palpite da Mega-Sena">
+      <img src="logo.svg" width="120" height="120" alt="">
+      <span id="tlabel">Gerar meu jogo</span>
+    </button>
+    <div class="bolas" id="bolas" aria-live="polite"></div>
+    <p class="mut tnota">Palpite aleatório, só por diversão: não aumenta a chance de ganhar. Faça o jogo aqui na lotérica.</p>
+  </div>
 </section>
 
 <section class="w" id="boloes">
@@ -137,21 +151,15 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 </div></footer>
 
 <script>
-var C={mega:["Mega-Sena","#0E7A3E"],quina:["Quina","#5B2A86"],lf:["Lotofácil","#A8237A"],ds:["Dia de Sorte","#8A6A00"],tm:["Timemania","#2E6B2E"],mm:["+Milionária","#1F2A6B"],fed:["Federal","#0F4C9C"],dup:["Dupla Sena","#A6193C"],lm:["Lotomania","#C2500F"],ss:["Super Sete","#5E7F1F"]};
-var SEM=[
- ["Domingo",["mega","quina","lf","ds","tm","fed"],"às 11h"],
- ["Segunda",["quina","lf","ds","dup","lm","ss"],"às 21h"],
- ["Terça",["mega","quina","lf","ds","tm"],"às 21h"],
- ["Quarta",["mm","quina","lf","ds","dup","lm","ss","fed"],"às 21h · Federal às 20h"],
- ["Quinta",["mega","quina","lf","ds","tm"],"às 21h"],
- ["Sexta",["mm","quina","lf","ds","dup","lm","ss"],"às 21h"],
- ["Sábado",[],"Sem sorteio · lotérica aberta até 12h"]];
 var hoje=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Sao_Paulo"}));
-var g=document.getElementById("semana");
-SEM.forEach(function(d,i){var c=document.createElement("div");c.className="dia"+(i===hoje.getDay()?" hoje":"");
- var b=document.createElement("b");b.textContent=d[0];if(i===hoje.getDay()){var t=document.createElement("span");t.className="tag";t.textContent="Hoje";b.appendChild(t);}c.appendChild(b);
- var ch=document.createElement("div");ch.className="chips";d[1].forEach(function(k){var s=document.createElement("span");s.className="chip";s.style.background=C[k][1];s.textContent=C[k][0];ch.appendChild(s);});c.appendChild(ch);
- var m=document.createElement("div");m.className="mut";m.textContent=d[2];c.appendChild(m);g.appendChild(c);});
+var tb=document.getElementById("tbtn"),bx=document.getElementById("bolas");
+function sorteia(){var n=[];while(n.length<6){var r=new Uint32Array(1);crypto.getRandomValues(r);var v=r[0]%60+1;if(n.indexOf(v)<0)n.push(v);}return n.sort(function(a,b){return a-b;});}
+tb.addEventListener("click",function(){
+  tb.classList.remove("gira");void tb.offsetWidth;tb.classList.add("gira");
+  var n=sorteia();bx.textContent="";
+  n.forEach(function(v,i){var s=document.createElement("span");s.className="bola";s.style.animationDelay=(i*90)+"ms";s.textContent=(v<10?"0":"")+v;bx.appendChild(s);});
+  document.getElementById("tlabel").textContent="Gerar outro jogo";
+});
 var h=hoje.getHours()+hoje.getMinutes()/60,dw=hoje.getDay(),aberto=(dw>=1&&dw<=5&&h>=8&&h<17.5)||(dw===6&&h>=8&&h<12);
 var st=document.getElementById("status");document.getElementById("statusTxt").textContent=aberto?"Aberto agora":"Fechado agora";if(!aberto)st.className="status off";
 </script>
