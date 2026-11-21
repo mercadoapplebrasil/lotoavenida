@@ -71,7 +71,7 @@ section{scroll-margin-top:16px}
 .insta{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;margin-bottom:22px;border-radius:999px;background:#fff;color:#163A8F;font-weight:700;font-size:18px;text-decoration:none}
 .insta:hover{background:#EAF0FB}
 .btn.ig{gap:10px;color:#fff;background:linear-gradient(45deg,#C13584,#E1306C 45%,#F56040)}.btn.ig:hover{filter:brightness(1.08)}.btn.ig svg{width:24px;height:24px}
-.hero>.w{padding-bottom:36px}.faixas{background:#178A47;color:#fff}.faixas .w{padding-top:26px;padding-bottom:28px}.ft{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:24px;margin:0 0 16px}.fx{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.fx div{background:#fff;color:#14213D;border-radius:16px;padding:14px 8px;text-align:center}.fx b{display:block;font-family:Outfit,Inter,sans-serif;font-size:44px;line-height:1;color:#178A47}.fx span{font-size:16px;line-height:1.25;display:block;margin-top:4px}.fx strong{font-size:19px}.fs{margin:16px 0 0;font-size:17px;color:#E7F6EC}
+.hero>.w{padding-bottom:36px}.faixas{background:#178A47;color:#fff}.cd{background:#0F6B35;border-radius:20px;padding:20px 18px 22px;margin-bottom:26px;text-align:center}.cdl{font-weight:700;font-size:20px;margin:0 0 14px}.cdn{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.cdn div{background:#fff;border-radius:14px;padding:12px 4px}.cdn b{display:block;font-family:Outfit,Inter,sans-serif;font-size:38px;line-height:1;color:#0F6B35;font-variant-numeric:tabular-nums}.cdn span{font-size:15px;color:#14213D}.cds{font-size:17px;margin:14px 0 16px;color:#E7F6EC}.cd .btn{width:100%}.faixas .w{padding-top:26px;padding-bottom:28px}.ft{font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:24px;margin:0 0 16px}.fx{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.fx div{background:#fff;color:#14213D;border-radius:16px;padding:14px 8px;text-align:center}.fx b{display:block;font-family:Outfit,Inter,sans-serif;font-size:44px;line-height:1;color:#178A47}.fx span{font-size:16px;line-height:1.25;display:block;margin-top:4px}.fx strong{font-size:19px}.fs{margin:16px 0 0;font-size:17px;color:#E7F6EC}
 .hero .brand{margin-bottom:16px!important}
 section.w{padding-top:56px;padding-bottom:10px}
 h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
@@ -149,6 +149,12 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   </div>
 </div>
 <div class="faixas" aria-label="Faixas de prêmio da Mega-Sena"><div class="w">
+  <div class="cd" id="cd" hidden>
+    <p class="cdl" id="cdL">Pedidos de bolão da Mega-Sena fecham em</p>
+    <div class="cdn" id="cdN" role="timer" aria-live="off"><div><b id="cdD">0</b><span>dias</span></div><div><b id="cdH">00</b><span>horas</span></div><div><b id="cdM">00</b><span>min</span></div><div><b id="cdS">00</b><span>seg</span></div></div>
+    <p class="cds" id="cdS2"></p>
+    <a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Garantir minha cota</a>
+  </div>
   <p class="ft">Mega-Sena: 3 jeitos de ganhar</p>
   <div class="fx"><div><b>6</b><span>acertos<br><strong>Sena</strong></span></div><div><b>5</b><span>acertos<br><strong>Quina</strong></span></div><div><b>4</b><span>acertos<br><strong>Quadra</strong></span></div></div>
   <p class="fs">Sorteios terça, quinta e sábado. Aposta simples com 6 números.</p>
@@ -211,6 +217,26 @@ tb.addEventListener("click",function(){
 var h=hoje.getHours()+hoje.getMinutes()/60,dw=hoje.getDay(),aberto=(dw>=1&&dw<=5&&h>=8&&h<17.5)||(dw===6&&h>=8&&h<12);
 var st=document.getElementById("status");document.getElementById("statusTxt").textContent=aberto?"Aberto agora":"Fechado agora";if(!aberto)st.className="status off";
 
+
+/* contagem regressiva: fechamento dos pedidos = sorteio - 15 min (horario de Brasilia) */
+var CD=(function(){
+  var alvo=null,MIN15=15*60000;
+  function sorteioUTC(y,m,d){var dw=new Date(Date.UTC(y,m-1,d)).getUTCDay();return Date.UTC(y,m-1,d,(dw===0?11:21)+3,0,0);}
+  function daData(s){var p=String(s||"").split("/");return p.length<3?null:sorteioUTC(+p[2],+p[1],+p[0]);}
+  function agenda(){var FIXO=daData("22/11/2026"),now=Date.now();if(FIXO&&now<FIXO)return FIXO;
+    var b=new Date(now-3*3600000);for(var i=0;i<8;i++){var t=new Date(Date.UTC(b.getUTCFullYear(),b.getUTCMonth(),b.getUTCDate()+i));var dw=t.getUTCDay();
+      if(dw===2||dw===4||dw===6){var s=sorteioUTC(t.getUTCFullYear(),t.getUTCMonth()+1,t.getUTCDate());if(s>now)return s;}}return null;}
+  function z(n){return (n<10?"0":"")+n;}
+  function tick(){var now=Date.now();if(!alvo||now>=alvo)alvo=agenda();var box=document.getElementById("cd");if(!alvo){box.hidden=true;return;}
+    var fecha=alvo-MIN15,loc=new Date(alvo-3*3600000),dn=["domingo","segunda","terça","quarta","quinta","sexta","sábado"][loc.getUTCDay()];
+    var quando=dn+", "+z(loc.getUTCDate())+"/"+z(loc.getUTCMonth()+1)+", às "+loc.getUTCHours()+"h";
+    var falta=fecha-now,fechado=falta<=0;if(fechado)falta=alvo-now;
+    document.getElementById("cdL").textContent=fechado?"Pedidos encerrados. Sorteio em":"Pedidos de bolão da Mega-Sena fecham em";
+    var s=Math.floor(falta/1000);document.getElementById("cdD").textContent=Math.floor(s/86400);document.getElementById("cdD").nextElementSibling.textContent=Math.floor(s/86400)===1?"dia":"dias";document.getElementById("cdH").textContent=z(Math.floor(s%86400/3600));document.getElementById("cdM").textContent=z(Math.floor(s%3600/60));document.getElementById("cdS").textContent=z(s%60);
+    document.getElementById("cdS2").textContent="Sorteio "+quando+". Pedidos até 15 minutos antes.";box.hidden=false;}
+  tick();setInterval(tick,1000);
+  return {set:function(s){var t=daData(s);if(t&&t>Date.now()){alvo=t;tick();}}};
+})();
 (function(){
   var FONTES=[
     ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};}],
@@ -232,7 +258,7 @@ var st=document.getElementById("status");document.getElementById("statusTxt").te
     document.getElementById("mData").textContent=dia(d.data);
     var dz=(d.dez||[]).map(function(x){return ("0"+parseInt(x,10)).slice(-2);}).join(" · ");
     document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");
-    document.getElementById("megaCard").hidden=false;
+    document.getElementById("megaCard").hidden=false;try{CD.set(d.data);}catch(e){}
   }
   get(0);
 })();
