@@ -66,6 +66,13 @@ h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
 .tnota{margin:18px auto 0;max-width:520px}
 @media(prefers-reduced-motion:reduce){.tbtn.gira img,.bola{animation:none}}
 @media(max-width:520px){.bolas{max-width:250px;margin-left:auto;margin-right:auto}}
+.mega{background:#fff;color:#14213D;border-radius:16px;padding:20px 22px;grid-column:1/-1}
+.mtop{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:700;font-size:17px;color:#4A5468}
+.mtag{background:#0E7A3E;color:#fff;border-radius:8px;padding:4px 10px;font-size:15px;letter-spacing:.05em}
+.ml{margin-top:12px;font-size:17px;color:#4A5468}
+.mv{font-size:clamp(34px,8.5vw,54px);line-height:1.05;color:#0E7A3E;white-space:nowrap}
+.md{font-size:19px;font-weight:700;margin-top:4px}
+.mult{font-size:16px;color:#4A5468;margin-top:10px;border-top:1px dashed #E6DDCB;padding-top:10px}
 .bol{background:#163A8F;color:#fff;border-radius:20px;padding:34px 26px;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
 .bol h2{font-size:clamp(30px,5vw,44px)}
 .bol p{margin:0;color:#DCE4F7}
@@ -108,6 +115,13 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   <div class="bol">
     <div><p class="eye">Bolão Caixa</p><h2>Jogue junto, pague só a sua cota.</h2>
     <p>Bolões de Mega-Sena, +Milionária e Mega da Virada, registrados na Caixa. Veja os bolões abertos, o prêmio e o valor de cada cota.</p></div>
+    <div class="mega" id="megaCard" hidden>
+      <div class="mtop"><span class="mtag">MEGA-SENA</span><span id="mConc"></span></div>
+      <div class="ml">Próximo sorteio · prêmio estimado</div>
+      <div class="d mv" id="mValor"></div>
+      <div class="md" id="mData"></div>
+      <div class="mult" id="mUlt"></div>
+    </div>
     <div class="btns"><a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a><a class="btn s" href="https://www.loteriasonline.caixa.gov.br/silce-web/#/bolao-caixa/001926" target="_blank" rel="noopener">Comprar on-line na Caixa</a></div>
   </div>
 </section>
@@ -151,6 +165,32 @@ tb.addEventListener("click",function(){
 });
 var h=hoje.getHours()+hoje.getMinutes()/60,dw=hoje.getDay(),aberto=(dw>=1&&dw<=5&&h>=8&&h<17.5)||(dw===6&&h>=8&&h<12);
 var st=document.getElementById("status");document.getElementById("statusTxt").textContent=aberto?"Aberto agora":"Fechado agora";if(!aberto)st.className="status off";
+
+(function(){
+  var FONTES=[
+    ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};}],
+    ["https://loteriascaixa-api.herokuapp.com/api/megasena/latest",function(j){return {conc:j.proximoConcurso,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.concurso,dez:j.dezenas,acum:j.acumulou};}]
+  ];
+  function get(i){
+    if(i>=FONTES.length) return;
+    var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){ctl&&ctl.abort();},7000);
+    fetch(FONTES[i][0],{signal:ctl?ctl.signal:undefined,cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(j){clearTimeout(t);var d=FONTES[i][1](j);if(!d.valor||!d.conc)throw 0;mostra(d);})
+      .catch(function(){clearTimeout(t);get(i+1);});
+  }
+  function brl(v){v=Number(v);if(v>=1e6){var m=v/1e6;return "R$ "+(m>=10?Math.round(m):m.toFixed(1).replace(".",","))+(m>=2?" milhões":" milhão");}return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
+  function dia(s){var p=String(s||"").split("/");if(p.length<3)return s||"";var dt=new Date(+p[2],+p[1]-1,+p[0]);var dw=dt.getDay();
+    var n=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"][dw];return n+", "+p[0]+"/"+p[1]+(dw===0?" às 11h":" às 21h");}
+  function mostra(d){
+    document.getElementById("mConc").textContent="Concurso "+d.conc;
+    document.getElementById("mValor").textContent=brl(d.valor);
+    document.getElementById("mData").textContent=dia(d.data);
+    var dz=(d.dez||[]).map(function(x){return ("0"+parseInt(x,10)).slice(-2);}).join(" · ");
+    document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");
+    document.getElementById("megaCard").hidden=false;
+  }
+  get(0);
+})();
 </script>
 </body>
 </html>
