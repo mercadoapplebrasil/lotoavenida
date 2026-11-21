@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><circle cx="110" cy="110" r="110" fill="#fff"/><svg x="24" y="30" width="172" height="172" viewBox="612 -14 196 196"><g stroke-linecap="round" stroke-linejoin="round">
+<!-- rabo -->
+<path d="M92 128 C52 120 26 92 22 58 C40 84 62 98 100 104Z" fill="#5A2D1A"/>
+<!-- pernas de tras (fundo) -->
+<rect x="150" y="160" width="34" height="62" rx="15" fill="#47220F"/>
+<rect x="604" y="160" width="34" height="62" rx="15" fill="#47220F"/>
+<!-- corpo -->
+<rect x="78" y="88" width="600" height="98" rx="49" fill="#5A2D1A"/>
+<!-- franja da barriga -->
+<path d="M150 182 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0 q10 16 20 0Z" fill="#5A2D1A"/>
+<!-- peito caramelo -->
+<path d="M640 110 C682 120 690 160 660 184 C640 190 620 186 612 176 C640 160 644 134 640 110Z" fill="#B5651D"/>
+<!-- pernas da frente -->
+<rect x="112" y="158" width="36" height="66" rx="16" fill="#5A2D1A"/>
+<rect x="566" y="158" width="36" height="66" rx="16" fill="#5A2D1A"/>
+<!-- patas caramelo -->
+<path d="M106 224 a14 14 0 0 1 14-16 h26 a14 14 0 0 1 14 16Z" fill="#B5651D"/>
+<path d="M144 224 a14 14 0 0 1 14-14 h22 a14 14 0 0 1 14 14Z" fill="#9A5418"/>
+<path d="M560 224 a14 14 0 0 1 14-16 h26 a14 14 0 0 1 14 16Z" fill="#B5651D"/>
+<path d="M598 224 a14 14 0 0 1 14-14 h22 a14 14 0 0 1 14 14Z" fill="#9A5418"/>
+<!-- pescoco -->
+<path d="M610 100 C640 70 660 50 690 40 L728 96 C704 112 690 140 676 160 C650 150 624 130 610 100Z" fill="#5A2D1A"/>
+<!-- cabeca -->
+<circle cx="704" cy="64" r="42" fill="#5A2D1A"/>
+<!-- focinho pra cima -->
+<path d="M716 30 L776 6 C792 4 798 20 788 30 L736 84Z" fill="#5A2D1A"/>
+<path d="M740 62 L788 30 C784 40 770 56 744 82Z" fill="#B5651D"/>
+<circle cx="784" cy="14" r="11" fill="#3A1C10"/>
+<!-- olho -->
+<circle cx="722" cy="46" r="7" fill="#fff"/><circle cx="724" cy="45" r="4.5" fill="#3A1C10"/>
+<circle cx="716" cy="32" r="5" fill="#B5651D"/>
+<!-- orelha comprida -->
+<path d="M668 44 C640 60 628 110 640 160 C646 176 660 170 664 158 C668 172 682 168 684 154 C690 164 702 158 700 144 C704 110 700 70 692 48Z" fill="#8A4A25"/>
+<path d="M654 150 q4 10 10 4 M674 150 q4 10 10 2" stroke="#6E3719" stroke-width="5" fill="none"/>
+</g>
+</svg></svg>
