@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lotérica da Avenida — Pirassununga/SP</title>
+<meta name="description" content="Lotérica da Avenida (Vilela & Granhani), na Av. 6 de Agosto, 14, em Pirassununga/SP. Horário, sorteios da semana, bolões e onde receber seu prêmio.">
+<meta name="theme-color" content="#163A8F">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Lotérica Avenida">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lotérica da Avenida — Pirassununga/SP">
+<meta property="og:description" content="Horário, sorteios da semana, bolões e onde receber seu prêmio.">
+<meta property="og:url" content="https://lotoavenida.com.br/">
+<meta property="og:image" content="https://lotoavenida.com.br/icon-512.png">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://lotoavenida.com.br/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FBF6EC;color:#14213D;font-family:Inter,system-ui,sans-serif;font-size:19px;line-height:1.5}
+h1,h2,.d{font-family:Outfit,Inter,sans-serif;font-weight:800}
+.w{max-width:1180px;margin:0 auto;padding:0 20px}
+header{background:#163A8F;color:#fff}
+.top{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand b{font-family:Outfit,Inter,sans-serif;font-size:26px;line-height:1.1;display:block}
+.brand small{font-size:15px;color:#DCE4F7}
+nav{display:flex;flex-wrap:wrap;gap:18px;font-weight:600;font-size:17px}
+nav a{color:#fff;text-decoration:none;padding:6px 0}
+nav a:hover{text-decoration:underline}
+.hero{background:#163A8F;color:#fff;border-top:1px solid #2D4FA8}
+.hero .w{padding-top:48px;padding-bottom:56px;display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
+.eye{margin:0 0 14px;font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC9A8}
+h1{margin:0 0 16px;font-size:clamp(38px,7vw,64px);line-height:1.04}
+.lead{margin:0 0 24px;font-size:21px;color:#DCE4F7}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;border-radius:12px;font-weight:700;font-size:19px;text-decoration:none}
+.btn.p{background:#EE7B3D;color:#14213D}.btn.p:hover{background:#F58E55}
+.btn.s{border:2px solid #fff;color:#fff}.btn.s:hover{background:#fff;color:#163A8F}
+.info{background:#fff;color:#14213D;border-radius:20px;padding:24px 26px;display:flex;flex-direction:column;gap:16px}
+.info .l{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C2500F}
+.info .v{font-size:22px;font-weight:700;line-height:1.3}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:18px;border-radius:999px;padding:6px 14px;background:#E3F7EA;color:#0E7A3E;align-self:flex-start}
+.status.off{background:#FDE8DD;color:#9A3412}
+.status i{width:10px;height:10px;border-radius:50%;background:currentColor;display:block}
+section.w{padding-top:56px;padding-bottom:10px}
+h2{margin:0 0 8px;font-size:clamp(32px,5vw,44px);line-height:1.1}
+.sub{margin:0 0 26px;color:#4A5468}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.dia{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:18px 20px}
+.dia b{font-family:Outfit,Inter,sans-serif;font-size:24px;display:block;margin-bottom:8px}
+.dia.hoje{border:3px solid #EE7B3D}
+.dia .tag{display:inline-block;font-size:14px;font-weight:700;background:#EE7B3D;color:#14213D;border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:middle}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:16px;font-weight:700;color:#fff;border-radius:8px;padding:5px 10px}
+.dia .mut{font-size:16px;color:#4A5468;margin-top:8px}
+.bol{background:#163A8F;color:#fff;border-radius:20px;padding:34px 26px;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
+.bol h2{font-size:clamp(30px,5vw,44px)}
+.bol p{margin:0;color:#DCE4F7}
+.card{background:#fff;border:1px solid #E6DDCB;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.card b{font-size:21px}
+.mut{color:#4A5468;font-size:17px}
+.mapa{border:0;width:100%;height:320px;border-radius:16px;display:block}
+footer{background:#14213D;color:#DCE4F7;margin-top:60px;font-size:17px}
+footer .w{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;padding-top:36px;padding-bottom:36px}
+footer b{color:#fff}footer .n{font-family:Outfit,Inter,sans-serif;font-size:22px;color:#fff;font-weight:800}
+footer div>div{margin-bottom:6px}footer a{color:#FFC9A8}
+a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
+@media(max-width:560px){.btn{width:100%}nav{gap:14px;font-size:16px}}
+</style>
+</head>
+<body>
+<header><div class="w top">
+  <div class="brand"><img src="logo.svg" width="52" height="52" alt="" style="display:block">
+  <div><b>Lotérica da Avenida</b><small>Vilela &amp; Granhani · Pirassununga/SP</small></div></div>
+  <nav aria-label="Navegação principal"><a href="#sorteios">Sorteios</a><a href="#boloes">Bolões</a><a href="#premio">Recebeu prêmio?</a><a href="#onde">Onde estamos</a></nav>
+</div></header>
+
+<div class="hero"><div class="w">
+  <div>
+    <p class="eye">Lotérica credenciada Caixa · Pirassununga/SP</p>
+    <h1>A sorte passa pela Avenida.</h1>
+    <p class="lead">Todas as loterias da Caixa, bolões oficiais e conferência do seu bilhete. Na Av. 6 de Agosto, 14, em Pirassununga.</p>
+    <div class="btns"><a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a><a class="btn s" href="#onde">Como chegar</a></div>
+  </div>
+  <div class="info" aria-label="Horário e endereço">
+    <span class="status" id="status"><i></i><span id="statusTxt">Horário de atendimento</span></span>
+    <div><div class="l">Horário</div><div class="v">Segunda a sexta: 8h às 17h30<br>Sábado: 8h às 12h</div></div>
+    <div><div class="l">Endereço</div><div class="v">Av. 6 de Agosto, 14<br>Pirassununga/SP</div></div>
+    <div class="mut">Em feriado nacional não tem sorteio.</div>
+  </div>
+</div></div>
+
+<main>
+<section class="w" id="sorteios">
+  <h2>Sorteios da semana</h2>
+  <p class="sub">Sorteios às 21h de segunda a sexta e às 11h no domingo. Sábado não tem sorteio.</p>
+  <div class="grid" id="semana"></div>
+</section>
+
+<section class="w" id="boloes">
+  <div class="bol">
+    <div><p class="eye">Bolão Caixa</p><h2>Jogue junto, pague só a sua cota.</h2>
+    <p>Bolões de Mega-Sena, +Milionária e Mega da Virada, registrados na Caixa. Veja os bolões abertos, o prêmio e o valor de cada cota.</p></div>
+    <div class="btns"><a class="btn p" href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a><a class="btn s" href="https://www.loteriasonline.caixa.gov.br/silce-web/#/bolao-caixa/001926" target="_blank" rel="noopener">Comprar on-line na Caixa</a></div>
+  </div>
+</section>
+
+<section class="w" id="premio">
+  <h2>Ganhou? Veja onde receber</h2>
+  <p class="sub">Confira seu bilhete com a gente. O prazo para receber é de 90 dias depois do sorteio.</p>
+  <div class="grid">
+    <div class="card"><b>Prêmios menores</b><span class="mut">Recebe aqui na lotérica, com o bilhete premiado.</span></div>
+    <div class="card"><b>Prêmios maiores</b><span class="mut">Recebe em agência da Caixa, com documento com CPF e o bilhete.</span></div>
+    <div class="card"><b>Aposta pela internet</b><span class="mut">Prêmio de aposta feita no app ou no site da Caixa segue as regras do canal on-line.</span></div>
+    <div class="card"><b>Cuide do bilhete</b><span class="mut">Guarde sem amassar e longe da umidade. O bilhete é ao portador: quem tem, recebe.</span></div>
+  </div>
+</section>
+
+<section class="w" id="onde">
+  <h2>Onde estamos</h2>
+  <p class="sub">Av. 6 de Agosto, 14 · Pirassununga/SP</p>
+  <iframe class="mapa" title="Mapa da Lotérica da Avenida" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+6+de+Agosto,+14,+Pirassununga+SP&output=embed"></iframe>
+  <div class="btns" style="margin-top:16px"><a class="btn p" href="https://www.google.com/maps/search/?api=1&query=Av.+6+de+Agosto,+14,+Pirassununga+SP" target="_blank" rel="noopener">Abrir no mapa</a><a class="btn p" style="background:#163A8F;color:#fff" href="https://www.instagram.com/lotoavenidapirassununga/" target="_blank" rel="noopener">Instagram</a></div>
+</section>
+</main>
+
+<footer><div class="w">
+  <div><div class="n">Lotérica da Avenida</div><div>Vilela &amp; Granhani Ltda Me · código 21.001926-3</div><div>Av. 6 de Agosto, 14 · Pirassununga/SP</div><div>Seg a sex 8h–17h30 · Sáb 8h–12h</div>
+  <div><a href="https://loterias24horas.com.br/">Bolões: loterias24horas.com.br</a> · <a href="https://www.instagram.com/lotoavenidapirassununga/">@lotoavenidapirassununga</a></div></div>
+  <div style="max-width:520px"><div><b>Proibido para menores de 18 anos. Jogue com responsabilidade.</b></div><div>Este site é da Lotérica da Avenida e não é um site da Caixa. Loteria é jogo de sorte: não há garantia de prêmio.</div></div>
+</div></footer>
+
+<script>
+var C={mega:["Mega-Sena","#0E7A3E"],quina:["Quina","#5B2A86"],lf:["Lotofácil","#A8237A"],ds:["Dia de Sorte","#8A6A00"],tm:["Timemania","#2E6B2E"],mm:["+Milionária","#1F2A6B"],fed:["Federal","#0F4C9C"],dup:["Dupla Sena","#A6193C"],lm:["Lotomania","#C2500F"],ss:["Super Sete","#5E7F1F"]};
+var SEM=[
+ ["Domingo",["mega","quina","lf","ds","tm","fed"],"às 11h"],
+ ["Segunda",["quina","lf","ds","dup","lm","ss"],"às 21h"],
+ ["Terça",["mega","quina","lf","ds","tm"],"às 21h"],
+ ["Quarta",["mm","quina","lf","ds","dup","lm","ss","fed"],"às 21h · Federal às 20h"],
+ ["Quinta",["mega","quina","lf","ds","tm"],"às 21h"],
+ ["Sexta",["mm","quina","lf","ds","dup","lm","ss"],"às 21h"],
+ ["Sábado",[],"Sem sorteio · lotérica aberta até 12h"]];
+var hoje=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Sao_Paulo"}));
+var g=document.getElementById("semana");
+SEM.forEach(function(d,i){var c=document.createElement("div");c.className="dia"+(i===hoje.getDay()?" hoje":"");
+ var b=document.createElement("b");b.textContent=d[0];if(i===hoje.getDay()){var t=document.createElement("span");t.className="tag";t.textContent="Hoje";b.appendChild(t);}c.appendChild(b);
+ var ch=document.createElement("div");ch.className="chips";d[1].forEach(function(k){var s=document.createElement("span");s.className="chip";s.style.background=C[k][1];s.textContent=C[k][0];ch.appendChild(s);});c.appendChild(ch);
+ var m=document.createElement("div");m.className="mut";m.textContent=d[2];c.appendChild(m);g.appendChild(c);});
+var h=hoje.getHours()+hoje.getMinutes()/60,dw=hoje.getDay(),aberto=(dw>=1&&dw<=5&&h>=8&&h<17.5)||(dw===6&&h>=8&&h<12);
+var st=document.getElementById("status");document.getElementById("statusTxt").textContent=aberto?"Aberto agora":"Fechado agora";if(!aberto)st.className="status off";
+</script>
+</body>
+</html>
