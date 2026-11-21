@@ -157,7 +157,7 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   </div>
   <p class="ft">Mega-Sena: 3 jeitos de ganhar</p>
   <div class="fx"><div><b>6</b><span>acertos<br><strong>Sena</strong></span></div><div><b>5</b><span>acertos<br><strong>Quina</strong></span></div><div><b>4</b><span>acertos<br><strong>Quadra</strong></span></div></div>
-  <p class="fs">Sorteios terça, quinta e sábado. Aposta simples com 6 números.</p>
+  <p class="fs">Sorteios terça e quinta às 21h e domingo às 11h. Aposta simples com 6 números.</p>
 </div></div>
 </div>
 
@@ -218,25 +218,31 @@ var h=hoje.getHours()+hoje.getMinutes()/60,dw=hoje.getDay(),aberto=(dw>=1&&dw<=5
 var st=document.getElementById("status");document.getElementById("statusTxt").textContent=aberto?"Aberto agora":"Fechado agora";if(!aberto)st.className="status off";
 
 
-/* contagem regressiva: fechamento dos pedidos = sorteio - 15 min (horario de Brasilia) */
+/* contagem regressiva: compra de bolao fecha 15 min antes do sorteio (horario de Brasilia).
+   Ordem: 1) cronograma oficial da Caixa (nov e dez/2026)  2) data vinda da API  3) regra ter/qui 21h e dom 11h */
 var CD=(function(){
-  var alvo=null,MIN15=15*60000;
-  function sorteioUTC(y,m,d){var dw=new Date(Date.UTC(y,m-1,d)).getUTCDay();return Date.UTC(y,m-1,d,(dw===0?11:21)+3,0,0);}
-  function daData(s){var p=String(s||"").split("/");return p.length<3?null:sorteioUTC(+p[2],+p[1],+p[0]);}
-  function agenda(){var FIXO=daData("22/11/2026"),now=Date.now();if(FIXO&&now<FIXO)return FIXO;
-    var b=new Date(now-3*3600000);for(var i=0;i<8;i++){var t=new Date(Date.UTC(b.getUTCFullYear(),b.getUTCMonth(),b.getUTCDate()+i));var dw=t.getUTCDay();
-      if(dw===2||dw===4||dw===6){var s=sorteioUTC(t.getUTCFullYear(),t.getUTCMonth()+1,t.getUTCDate());if(s>now)return s;}}return null;}
+  var MIN15=15*60000,api=null;
+  function U(y,m,d,hh,mm){return Date.UTC(y,m-1,d,hh+3,mm||0,0);}
+  function sorteioUTC(y,m,d){var dw=new Date(Date.UTC(y,m-1,d)).getUTCDay();return U(y,m,d,dw===0?11:21);}
+  var CRON=[[3089,2026,11,22],[3090,2026,11,24],[3091,2026,11,26],[3092,2026,11,29],[3093,2026,12,1],[3094,2026,12,3],[3095,2026,12,6],[3096,2026,12,8],[3097,2026,12,10],[3098,2026,12,13],[3099,2026,12,15]]
+    .map(function(c){var s=sorteioUTC(c[1],c[2],c[3]);return {conc:c[0],sorteio:s,fecha:s-MIN15,nome:"Mega-Sena"};});
+  CRON.push({conc:3100,sorteio:U(2027,1,1,11),fecha:U(2026,12,31,22),nome:"Mega da Virada"});
+  function regra(now){var b=new Date(now-3*3600000);for(var i=0;i<8;i++){var t=new Date(Date.UTC(b.getUTCFullYear(),b.getUTCMonth(),b.getUTCDate()+i)),dw=t.getUTCDay();
+    if(dw===0||dw===2||dw===4){var s=sorteioUTC(t.getUTCFullYear(),t.getUTCMonth()+1,t.getUTCDate());if(s>now)return {sorteio:s,fecha:s-MIN15,nome:"Mega-Sena"};}}return null;}
+  function proximo(now){for(var i=0;i<CRON.length;i++)if(CRON[i].sorteio>now)return CRON[i];if(api&&api.sorteio>now)return api;return regra(now);}
   function z(n){return (n<10?"0":"")+n;}
-  function tick(){var now=Date.now();if(!alvo||now>=alvo)alvo=agenda();var box=document.getElementById("cd");if(!alvo){box.hidden=true;return;}
-    var fecha=alvo-MIN15,loc=new Date(alvo-3*3600000),dn=["domingo","segunda","terça","quarta","quinta","sexta","sábado"][loc.getUTCDay()];
-    var quando=dn+", "+z(loc.getUTCDate())+"/"+z(loc.getUTCMonth()+1)+", às "+loc.getUTCHours()+"h";
-    var falta=fecha-now,fechado=falta<=0;if(fechado)falta=alvo-now;
-    document.getElementById("cdL").textContent=fechado?"Compra de bolão encerrada. Sorteio em":"Compra de bolão da Mega-Sena fecha em";
-    var s=Math.floor(falta/1000);document.getElementById("cdD").textContent=Math.floor(s/86400);document.getElementById("cdD").nextElementSibling.textContent=Math.floor(s/86400)===1?"dia":"dias";document.getElementById("cdH").textContent=z(Math.floor(s%86400/3600));document.getElementById("cdM").textContent=z(Math.floor(s%3600/60));document.getElementById("cdS").textContent=z(s%60);
-    document.getElementById("cdS2").textContent="Sorteio "+quando+". Compra de bolão até 15 minutos antes.";box.hidden=false;}
+  function hm(t){var l=new Date(t-3*3600000);return l.getUTCHours()+"h"+(l.getUTCMinutes()?z(l.getUTCMinutes()):"");}
+  function dia(t){var l=new Date(t-3*3600000);return ["domingo","segunda","terça","quarta","quinta","sexta","sábado"][l.getUTCDay()]+", "+z(l.getUTCDate())+"/"+z(l.getUTCMonth()+1);}
+  function tick(){var now=Date.now(),a=proximo(now),box=document.getElementById("cd");if(!a){box.hidden=true;return;}
+    var falta=a.fecha-now,fechado=falta<=0;if(fechado)falta=a.sorteio-now;
+    document.getElementById("cdL").textContent=fechado?"Compra de bolão encerrada. Sorteio em":"Compra de bolão da "+a.nome+" fecha em";
+    var s=Math.floor(falta/1000),d=Math.floor(s/86400);document.getElementById("cdD").textContent=d;document.getElementById("cdD").nextElementSibling.textContent=d===1?"dia":"dias";
+    document.getElementById("cdH").textContent=z(Math.floor(s%86400/3600));document.getElementById("cdM").textContent=z(Math.floor(s%3600/60));document.getElementById("cdS").textContent=z(s%60);
+    document.getElementById("cdS2").textContent=(a.conc?"Concurso "+a.conc+". ":"")+"Sorteio "+dia(a.sorteio)+", às "+hm(a.sorteio)+". Compra de bolão até "+dia(a.fecha).split(", ")[0]+", "+hm(a.fecha)+".";box.hidden=false;}
   tick();setInterval(tick,1000);
-  return {set:function(s){var t=daData(s);if(t&&t>Date.now()){alvo=t;tick();}}};
+  return {set:function(s,conc){var p=String(s||"").split("/");if(p.length<3)return;var t=sorteioUTC(+p[2],+p[1],+p[0]);if(t>Date.now()){api={conc:conc,sorteio:t,fecha:t-MIN15,nome:"Mega-Sena"};tick();}},_p:proximo};
 })();
+
 (function(){
   var FONTES=[
     ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};}],
@@ -258,7 +264,7 @@ var CD=(function(){
     document.getElementById("mData").textContent=dia(d.data);
     var dz=(d.dez||[]).map(function(x){return ("0"+parseInt(x,10)).slice(-2);}).join(" · ");
     document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");
-    document.getElementById("megaCard").hidden=false;try{CD.set(d.data);}catch(e){}
+    document.getElementById("megaCard").hidden=false;try{CD.set(d.data,d.conc);}catch(e){}
   }
   get(0);
 })();
