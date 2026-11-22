@@ -241,29 +241,39 @@ var CD=(function(){
 })();
 
 (function(){
+  /* busca em todas as fontes ao mesmo tempo e fica com a mais nova; refaz a cada 5 min */
+  var CX=function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};};
   var FONTES=[
-    ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};}],
+    ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",CX],
+    ["https://api.guidi.dev.br/loteria/megasena/ultimo",CX],
     ["https://loteriascaixa-api.herokuapp.com/api/megasena/latest",function(j){return {conc:j.proximoConcurso,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.concurso,dez:j.dezenas,acum:j.acumulou};}]
   ];
-  function get(i){
-    if(i>=FONTES.length) return;
-    var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){ctl&&ctl.abort();},7000);
-    fetch(FONTES[i][0],{signal:ctl?ctl.signal:undefined,cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json();})
-      .then(function(j){clearTimeout(t);var d=FONTES[i][1](j);if(!d.valor||!d.conc)throw 0;mostra(d);})
-      .catch(function(){clearTimeout(t);get(i+1);});
-  }
+  function um(f){return new Promise(function(ok){var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){ctl&&ctl.abort();},8000);
+    fetch(f[0]+(f[0].indexOf("?")<0?"?":"&")+"t="+Date.now(),{signal:ctl?ctl.signal:undefined,cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(j){clearTimeout(t);var d=f[1](j);ok(d&&d.ult?d:null);}).catch(function(){clearTimeout(t);ok(null);});});}
+  function quando(s){var p=String(s||"").split("/");if(p.length<3)return 0;var dw=new Date(Date.UTC(+p[2],+p[1]-1,+p[0])).getUTCDay();return Date.UTC(+p[2],+p[1]-1,+p[0],(dw===0?11:21)+3);}
   function brl(v){v=Number(v);if(v>=1e6){var m=v/1e6;return "R$ "+(m>=10?Math.round(m):m.toFixed(1).replace(".",","))+(m>=2?" milhões":" milhão");}return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
-  function dia(s){var p=String(s||"").split("/");if(p.length<3)return s||"";var dt=new Date(+p[2],+p[1]-1,+p[0]);var dw=dt.getDay();
-    var n=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"][dw];return n+", "+p[0]+"/"+p[1]+(dw===0?" às 11h":" às 21h");}
-  function mostra(d){
-    document.getElementById("mConc").textContent="Concurso "+d.conc;
-    document.getElementById("mValor").textContent=brl(d.valor);
-    document.getElementById("mData").textContent=dia(d.data);
-    var dz=(d.dez||[]).map(function(x){return ("0"+parseInt(x,10)).slice(-2);}).join(" · ");
-    document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");
-    document.getElementById("megaCard").hidden=false;try{CD.set(d.data,d.conc);}catch(e){}
+  function z(n){return (n<10?"0":"")+n;}
+  function diaT(t){var l=new Date(t-3*3600000),dw=l.getUTCDay();return ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"][dw]+", "+z(l.getUTCDate())+"/"+z(l.getUTCMonth()+1)+" às "+l.getUTCHours()+"h";}
+  function busca(){
+    Promise.all(FONTES.map(um)).then(function(rs){
+      var d=null;rs.forEach(function(r){if(r&&(!d||+r.ult>+d.ult))d=r;});
+      var prox=null;try{prox=CD._p(Date.now());}catch(e){}
+      var atual=d&&d.valor&&quando(d.data)>Date.now();
+      if(!d&&!prox)return;
+      var conc=atual?d.conc:(prox&&prox.conc)||(d&&+d.ult+1),tSort=atual?quando(d.data):(prox&&prox.sorteio);
+      document.getElementById("mConc").textContent=conc?"Concurso "+conc:"";
+      document.getElementById("mValor").textContent=atual?brl(d.valor):"Aguardando a Caixa";
+      document.getElementById("mValor").style.fontSize=atual?"":"0.6em";
+      document.getElementById("mData").textContent=tSort?diaT(tSort):"";
+      if(d&&d.dez&&d.dez.length&&(!conc||+d.ult>=+conc-1)){var dz=d.dez.map(function(x){return z(parseInt(x,10));}).join(" · ");
+        document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");}
+      else document.getElementById("mUlt").textContent="";
+      document.getElementById("megaCard").hidden=false;
+      if(atual){try{CD.set(d.data,d.conc);}catch(e){}}
+    });
   }
-  get(0);
+  busca();setInterval(busca,5*60000);
 })();
 
 (function(){var b=document.getElementById("mbtn"),g=document.getElementById("gaveta"),f=document.getElementById("fundo"),x=document.getElementById("gx");
