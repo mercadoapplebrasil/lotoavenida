@@ -242,6 +242,8 @@ var CD=(function(){
 
 (function(){
   /* busca em todas as fontes ao mesmo tempo e fica com a mais nova; refaz a cada 5 min */
+  /* prêmio manual: usado só quando as fontes estiverem atrasadas para esse concurso */
+  var MANUAL={conc:3090,valor:65000000};
   var CX=function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};};
   var FONTES=[
     ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",CX],
@@ -263,8 +265,9 @@ var CD=(function(){
       if(!d&&!prox)return;
       var conc=atual?d.conc:(prox&&prox.conc)||(d&&+d.ult+1),tSort=atual?quando(d.data):(prox&&prox.sorteio);
       document.getElementById("mConc").textContent=conc?"Concurso "+conc:"";
-      document.getElementById("mValor").textContent=atual?brl(d.valor):"Aguardando a Caixa";
-      document.getElementById("mValor").style.fontSize=atual?"":"0.6em";
+      var vm=atual?d.valor:(MANUAL&&+MANUAL.conc===+conc?MANUAL.valor:0);
+      document.getElementById("mValor").textContent=vm?brl(vm):"Aguardando a Caixa";
+      document.getElementById("mValor").style.fontSize=vm?"":"0.6em";
       document.getElementById("mData").textContent=tSort?diaT(tSort):"";
       if(d&&d.dez&&d.dez.length&&(!conc||+d.ult>=+conc-1)){var dz=d.dez.map(function(x){return z(parseInt(x,10));}).join(" · ");
         document.getElementById("mUlt").textContent="Último resultado (concurso "+d.ult+"): "+dz+(d.acum?" · acumulou":"");}
