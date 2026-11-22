@@ -111,21 +111,6 @@ footer b{color:#fff}footer .n{font-family:Outfit,Inter,sans-serif;font-size:22px
 footer div>div{margin-bottom:6px}footer a{color:#FFC9A8}
 a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 @media(max-width:560px){.btn{width:100%}nav{gap:14px;font-size:16px}}
-
-/* enquete de palpites */
-.enq{background:#163A8F;color:#fff;border-radius:24px;padding:28px 20px 30px;margin:0 0 40px}
-.enq h2{color:#fff}.enq .sub{color:#DCE4F7;font-size:19px;margin:0 0 18px}
-.grade{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:520px}
-.grade button{aspect-ratio:1;border:2px solid #4F6FC4;border-radius:12px;background:#0C2361;color:#fff;font:700 22px Outfit,Inter,sans-serif;cursor:pointer;padding:0}
-.grade button[aria-pressed="true"]{background:#EE7B3D;border-color:#EE7B3D;color:#14213D}
-.grade button:focus-visible{outline:3px solid #F6C343;outline-offset:2px}
-.esc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 14px;min-height:56px}
-.esc{gap:6px}.esc .bola{width:46px;height:46px;font-size:20px;background:#EE7B3D;color:#14213D;animation:none}
-.esc .vaz{width:46px;height:46px;border-radius:50%;border:2px dashed #4F6FC4}
-.enq label{display:block;font-weight:700;font-size:18px;margin:12px 0 6px}
-.enq input{width:100%;max-width:520px;min-height:52px;border-radius:12px;border:0;padding:0 14px;font:18px Inter,sans-serif;box-sizing:border-box}
-.enq .btn{margin-top:16px}.enq .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
-.enq .mut{color:#DCE4F7;margin:14px 0 0}
 </style>
 </head>
 <body>
@@ -139,7 +124,6 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
     <button type="button" class="gx" id="gx" aria-label="Fechar menu"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div>
   <a href="#boloes">Bolões</a>
   <a href="#trevo">Trevo da sorte</a>
-  <a href="#palpite">Palpite da galera</a>
   <a href="#onde">Onde estamos</a>
   <a href="https://loterias24horas.com.br/" rel="noopener">Ver bolões abertos</a>
   <a href="https://www.instagram.com/lotoavenidapirassununga/" target="_blank" rel="noopener">Instagram</a>
@@ -203,18 +187,6 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   </div>
 </section>
 
-<section class="w" id="palpite">
-  <div class="enq">
-    <h2>Palpite da galera</h2>
-    <p class="sub">Qual dezena vai sair na Mega-Sena? Marque 6 números e mande o seu palpite. Os mais escolhidos a gente conta no Instagram.</p>
-    <div class="grade" id="grade" role="group" aria-label="Escolha 6 dezenas"></div>
-    <div class="esc" id="esc" aria-live="polite"></div>
-    <label for="pnome">Seu nome (opcional)</label>
-    <input id="pnome" type="text" maxlength="40" autocomplete="name" placeholder="Como você quer aparecer">
-    <a class="btn p" id="penv" href="#" target="_blank" rel="noopener" aria-disabled="true">Enviar meu palpite</a>
-    <p class="mut">Abre o WhatsApp da lotérica com o seu palpite pronto. Só por diversão: não é aposta.</p>
-  </div>
-</section>
 <section class="w" id="onde">
   <h2>Onde estamos</h2>
   <p class="sub">Av. 6 de Agosto, 14 · Pirassununga/SP</p>
@@ -313,20 +285,6 @@ function fecha(){g.classList.remove("ab");f.hidden=true;b.setAttribute("aria-exp
 b.addEventListener("click",abre);x.addEventListener("click",fecha);f.addEventListener("click",fecha);
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!g.hidden)fecha();});
 Array.prototype.forEach.call(g.querySelectorAll("a"),function(a){a.addEventListener("click",fecha);});})();
-
-(function(){var g=document.getElementById("grade"),esc=document.getElementById("esc"),env=document.getElementById("penv"),nome=document.getElementById("pnome"),sel=[];
-for(var n=1;n<=60;n++){var b=document.createElement("button");b.type="button";b.textContent=(n<10?"0":"")+n;b.setAttribute("aria-pressed","false");b.dataset.n=n;g.appendChild(b);}
-function z(n){return (n<10?"0":"")+n;}
-function render(){esc.textContent="";var s=sel.slice().sort(function(a,b){return a-b;});
-  s.forEach(function(v){var e=document.createElement("span");e.className="bola";e.textContent=z(v);esc.appendChild(e);});
-  for(var i=s.length;i<6;i++){var e=document.createElement("span");e.className="vaz";esc.appendChild(e);}
-  var ok=s.length===6;env.setAttribute("aria-disabled",ok?"false":"true");
-  var conc=(document.getElementById("mConc").textContent||"").replace("Concurso ","");
-  var txt="Meu palpite pra Mega-Sena"+(conc?" "+conc:"")+": "+s.map(z).join(" - ")+(nome.value.trim()?" ("+nome.value.trim()+")":"");
-  env.href=ok?"https://wa.me/5511914819638?text="+encodeURIComponent(txt):"#";}
-g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var n=+b.dataset.n,i=sel.indexOf(n);
-  if(i>=0){sel.splice(i,1);b.setAttribute("aria-pressed","false");}else{if(sel.length>=6)return;sel.push(n);b.setAttribute("aria-pressed","true");}render();});
-nome.addEventListener("input",render);render();})();
 </script>
 </body>
 </html>
