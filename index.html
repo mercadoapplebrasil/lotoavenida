@@ -336,6 +336,29 @@ function vitrine(alvo, opt){
   }).catch(function(){});
 }
 vitrine(document.getElementById("vit"), {max:4, titulo:"Bolões abertos agora"});
+/* sons curtos da interface (só tocam depois de um toque; respeitam o modo silencioso do celular) */
+(function(){
+  var C=null;
+  function ctx(){ if(!C){ var A=window.AudioContext||window.webkitAudioContext; if(!A) return null; try{C=new A();}catch(e){return null;} }
+    if(C.state==="suspended"){ try{C.resume();}catch(e){} } return C; }
+  function tom(f,d,t,v,tipo){ var c=ctx(); if(!c||c.state!=="running"&&c.state!=="suspended") return;
+    var o=c.createOscillator(), g=c.createGain(), t0=c.currentTime+0.01+(t||0);
+    o.type=tipo||"sine"; o.frequency.setValueAtTime(f,t0);
+    g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(v||0.1,t0+0.012); g.gain.exponentialRampToValueAtTime(0.0001,t0+d);
+    o.connect(g); g.connect(c.destination); o.start(t0); o.stop(t0+d+0.03); }
+  var ultimo=0; ["pointerdown","keydown","touchstart"].forEach(function(ev){ document.addEventListener(ev,function(){ ultimo=Date.now(); ctx(); },{capture:true,passive:true}); });
+  function pode(){ return Date.now()-ultimo<1500; }
+  window.SOM={
+    plim:function(){ if(!pode())return; tom(1318.5,0.22,0,0.09); tom(1975.5,0.28,0.06,0.06); },
+    abre:function(){ if(!pode())return; tom(523.3,0.12,0,0.07,"triangle"); tom(784,0.18,0.07,0.06,"triangle"); },
+    fecha:function(){ if(!pode())return; tom(784,0.1,0,0.05,"triangle"); tom(523.3,0.14,0.06,0.04,"triangle"); },
+    sorteio:function(n){ if(!pode())return; for(var i=0;i<(n||6);i++) tom(880*Math.pow(1.122,i),0.2,i*0.13,0.08); tom(1760,0.45,(n||6)*0.13+0.05,0.07); }
+  };
+})();
+document.addEventListener("click",function(e){ if(!window.SOM) return; var t=e.target;
+  if(t.closest&&t.closest("#tbtn")){ SOM.sorteio(6); return; }
+  if(t.closest&&t.closest("#mbtn,.mbtn,[aria-expanded]")){ var b=t.closest("#mbtn,.mbtn,[aria-expanded]"); b.getAttribute("aria-expanded")==="true"?SOM.fecha():SOM.abre(); return; }
+  if(t.closest&&t.closest(".btn,.vi,.pill,a.ig")) SOM.plim(); },true);
 </script>
 </body>
 </html>
