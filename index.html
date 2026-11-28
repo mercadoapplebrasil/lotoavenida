@@ -305,7 +305,6 @@ var CD=(function(){
   var CX=function(j){return {conc:j.numeroConcursoProximo,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.numero,dez:j.listaDezenas,acum:j.acumulado};};
   var FONTES=[
     ["https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",CX],
-    ["https://api.guidi.dev.br/loteria/megasena/ultimo",CX],
     ["https://loteriascaixa-api.herokuapp.com/api/megasena/latest",function(j){return {conc:j.proximoConcurso,data:j.dataProximoConcurso,valor:j.valorEstimadoProximoConcurso,ult:j.concurso,dez:j.dezenas,acum:j.acumulou};}]
   ];
   function um(f){return new Promise(function(ok){var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){ctl&&ctl.abort();},8000);
