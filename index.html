@@ -141,7 +141,7 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 .av-braco{transform-origin:150px 52px}
 .sx-bola{transform-box:fill-box;transform-origin:50% 50%}
 .av-br,.av-bibi,.av-vento,.av-fum{opacity:0}
-.sx-dica{transform-origin:50% 50%;animation:sx-dica 1.5s ease-in-out infinite alternate}
+.sx-dica{transform-box:fill-box;transform-origin:50% 50%;animation:sx-dica 1.5s ease-in-out infinite alternate}
 @keyframes sx-dica{from{transform:scale(1)}to{transform:scale(1.06)}}
 .sx-led1{animation:sx-led1 8s steps(1,end) infinite}
 .sx-led2{animation:sx-led2 8s steps(1,end) infinite}
@@ -150,9 +150,11 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.sx-led1,.sx-led2,.sx-dica{animation:none}.sx-led2{opacity:0}}
 @keyframes av-carro{0.00%{transform:translateX(150px);opacity:1;animation-timing-function:cubic-bezier(.6,0,.9,.4)}17.78%{transform:translateX(660px);opacity:1}18.33%{transform:translateX(660px);opacity:0}21.11%{transform:translateX(-340px);opacity:0}22.78%{transform:translateX(-340px);opacity:1;animation-timing-function:cubic-bezier(.15,.7,.35,1)}46.67%{transform:translateX(150px);opacity:1}100.00%{transform:translateX(150px);opacity:1}}@keyframes av-roda{0.00%{transform:rotate(0deg);animation-timing-function:cubic-bezier(.6,0,.9,.4)}17.78%{transform:rotate(1440deg)}22.78%{transform:rotate(1440deg);animation-timing-function:cubic-bezier(.15,.7,.35,1)}46.67%{transform:rotate(2880deg)}100.00%{transform:rotate(2880deg)}}@keyframes av-corpo{0.00%{transform:rotate(0deg)}2.78%{transform:rotate(-2.2deg)}11.11%{transform:rotate(0deg)}22.78%{transform:rotate(0deg)}41.11%{transform:rotate(0deg)}45.56%{transform:rotate(1.8deg)}50.00%{transform:rotate(0deg)}100.00%{transform:rotate(0deg)}}@keyframes av-vento{0.00%{opacity:0.6}4.44%{opacity:1}16.67%{opacity:1}18.00%{opacity:0}23.33%{opacity:0}26.67%{opacity:0.9}41.11%{opacity:0.5}46.67%{opacity:0}100.00%{opacity:0}}@keyframes av-fum{0.00%{opacity:0}1.11%{opacity:0.9}10.00%{opacity:0.5}16.67%{opacity:0}100.00%{opacity:0}}@keyframes av-braco{0.00%{transform:rotate(70deg) scale(.15);opacity:0}48.33%{transform:rotate(70deg) scale(.15);opacity:0}52.22%{transform:rotate(-6deg) scale(1.08);opacity:1}55.00%{transform:rotate(0deg) scale(1);opacity:1}59.44%{transform:rotate(-7deg) scale(1);opacity:1}63.89%{transform:rotate(4deg) scale(1);opacity:1}68.33%{transform:rotate(-7deg) scale(1);opacity:1}72.78%{transform:rotate(4deg) scale(1);opacity:1}77.22%{transform:rotate(0deg) scale(1);opacity:1}100.00%{transform:rotate(0deg) scale(1);opacity:1}}@keyframes av-bola{0.00%{transform:scale(1)}65.56%{transform:scale(1)}66.67%{transform:scale(1.16)}68.89%{transform:scale(1)}70.56%{transform:scale(1.16)}72.78%{transform:scale(1)}74.44%{transform:scale(1.16)}76.67%{transform:scale(1)}100.00%{transform:scale(1)}}@keyframes av-br{0.00%{opacity:0}54.44%{opacity:0}57.78%{opacity:1}61.11%{opacity:0.25}64.44%{opacity:1}67.78%{opacity:0.25}71.11%{opacity:1}74.44%{opacity:0.25}77.78%{opacity:1}81.11%{opacity:0.25}84.44%{opacity:1}84.44%{opacity:0}100.00%{opacity:0}}@keyframes av-bibi{0.00%{opacity:0}55.33%{opacity:0}56.11%{opacity:1}64.44%{opacity:1}66.67%{opacity:0}100.00%{opacity:0}}@keyframes av-dica{0.00%{opacity:1}1.67%{opacity:0}95.56%{opacity:0}100.00%{opacity:1}}.sx.show .av-carro{animation:av-carro 9.0s linear both}.sx.show .av-roda{animation:av-roda 9.0s linear both}.sx.show .av-corpo{animation:av-corpo 9.0s linear both}.sx.show .av-vento{animation:av-vento 9.0s linear both}.sx.show .av-fum{animation:av-fum 9.0s linear both}.sx.show .av-braco{animation:av-braco 9.0s linear both}.sx.show .sx-bola{animation:av-bola 9.0s linear both}.sx.show .av-br{animation:av-br 9.0s linear both}.sx.show .av-bibi{animation:av-bibi 9.0s linear both}.sx.show .sx-dica{animation:av-dica 9.0s linear both}@media (prefers-reduced-motion:reduce){.sx.show .av-carro,.sx.show .av-roda,.sx.show .av-corpo,.sx.show .av-braco,.sx.show .sx-bola,.sx.show .av-vento,.sx.show .av-fum{animation:none}}</style>
 <style>
-.avn{padding:34px 0 0}
-.avn-b{display:block;width:100%;max-width:700px;margin:0 auto;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
+.desce{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:6px 16px;background:#EE7B3D;color:#14213D;font-weight:800;font-size:19px;text-decoration:none}.desce svg{width:26px;height:26px;flex:none;animation:desce 1.2s ease-in-out infinite}.desce:hover{filter:brightness(1.08)}@keyframes desce{0%,100%{transform:translateY(-3px)}50%{transform:translateY(5px)}}@media(prefers-reduced-motion:reduce){.desce svg{animation:none}}
+.avn{display:flex;justify-content:center;background:linear-gradient(#E6F0FF 0 75.47%,#D9D2C3 75.47% 79.62%,#9AA3AE 79.62% 80.75%,#3A3F47 80.75%)}
+.avn-b{display:block;width:min(100%,700px);margin:0;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
 .avn-b svg{display:block;width:100%;height:auto}
+@media(min-width:760px){.avn-b{width:min(100%,700px,calc(62vh*1.132))}}
 </style>
 </head>
 <body>
@@ -172,6 +174,79 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
   <div class="ginfo">Seg a sex: 8h às 17h30<br>Sábado: 8h às 12h<br>Av. 6 de Agosto, 14</div>
 </nav>
 
+
+<section class="avn" aria-label="Avenida">
+<button class="avn-b" id="avn" type="button" data-som="avenida.mp3?v=2"><svg class="sx" viewBox="0 -200 600 530" role="img" aria-label="Cena da avenida: toque para o carro passar e sacar o bilhete com o palpite do dia" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sxled" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0H5M0 0V5" stroke="#06080C" stroke-width="1.7" opacity=".8"/></pattern></defs><rect x="0" y="-200" width="600" height="405" fill="#E6F0FF"/><circle cx="545" cy="42" r="24" fill="#FFD766"/><rect x="505" y="120" width="10" height="82" fill="#7A5230"/><circle cx="510" cy="104" r="34" fill="#178A47"/><circle cx="534" cy="122" r="22" fill="#1E9E55"/><rect x="150" y="40" width="300" height="162" rx="6" fill="#163A8F"/><rect x="160" y="50" width="280" height="42" rx="6" fill="#fff"/><text x="300" y="79" font-size="22" fill="#163A8F" text-anchor="middle">LOTÉRICA DA AVENIDA</text><path d="M150 100H450V114H150Z" fill="#EE7B3D"/><path d="M150 114H450V120H150Z" fill="#178A47"/><rect x="170" y="132" width="84" height="50" rx="4" fill="#DCE4F7"/><rect x="346" y="132" width="84" height="50" rx="4" fill="#DCE4F7"/><rect x="272" y="128" width="56" height="74" rx="4" fill="#EAF0FB"/><circle cx="318" cy="166" r="3.5" fill="#163A8F"/><g><rect x="192" y="-104" width="15" height="148" fill="#6B7280"/><rect x="393" y="-104" width="15" height="148" fill="#6B7280"/><rect x="186" y="36" width="27" height="10" rx="3" fill="#565C66"/><rect x="387" y="36" width="27" height="10" rx="3" fill="#565C66"/><rect x="140" y="-194" width="320" height="100" rx="9" fill="#1A1E26" stroke="#0A0D12" stroke-width="5"/><rect x="151" y="-185" width="298" height="74" rx="4" fill="#06080C"/><g class="sx-led1"><text x="300" y="-152" font-size="25" fill="#FFC53D" text-anchor="middle" letter-spacing="1.5">BOLÕES DA CAIXA</text><text x="300" y="-124" font-size="22" fill="#4DE08A" text-anchor="middle" letter-spacing="1.5">AQUI NA AVENIDA</text></g><g class="sx-led2"><text x="300" y="-152" font-size="25" fill="#FF5C5C" text-anchor="middle" letter-spacing="1.5">MEGA DA VIRADA</text><text x="300" y="-124" font-size="24" fill="#FFC53D" text-anchor="middle" letter-spacing="1.5">R$ 1 BILHÃO</text></g><rect x="151" y="-185" width="298" height="74" rx="4" fill="url(#sxled)"/><text x="300" y="-100" font-size="12" fill="#8A93A0" text-anchor="middle" letter-spacing="2">JC LED</text></g><rect x="66" y="74" width="7" height="130" fill="#6B7280"/><rect x="6" y="50" width="128" height="34" rx="6" fill="#0E7A3E"/><text x="70" y="73" font-size="15" fill="#fff" text-anchor="middle">Av. 6 de Agosto</text><rect y="200" width="600" height="24" fill="#D9D2C3"/><rect y="222" width="600" height="6" fill="#9AA3AE"/><rect y="228" width="600" height="102" fill="#3A3F47"/><path d="M0 300H58M542 300H600" stroke="#fff" stroke-width="5" stroke-dasharray="38 28"/><g><ellipse cx="300" cy="332" rx="252" ry="64" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="26 20" opacity=".85"/><ellipse cx="300" cy="332" rx="172" ry="42" fill="#D9D2C3" stroke="#9AA3AE" stroke-width="3"/><ellipse cx="300" cy="334" rx="156" ry="33" fill="#2E8B4F"/><g fill="#F5C842"><circle cx="246" cy="318" r="5"/><circle cx="300" cy="312" r="5"/><circle cx="354" cy="318" r="5"/></g><g fill="#E8667A"><circle cx="272" cy="326" r="4.5"/><circle cx="328" cy="326" r="4.5"/></g></g><g transform="translate(0 180)"><g class="av-carro"><path class="av-vento" d="M-78 58H-16M-104 76H-30M-66 92H-12" stroke="#fff" stroke-width="5" stroke-linecap="round"/><g class="av-fum" fill="#D5D9DF"><circle cx="-4" cy="90" r="9"/><circle cx="-22" cy="82" r="12"/><circle cx="-44" cy="74" r="15"/></g><g class="av-corpo"><path d="M22 66V44" stroke="#7A0D0D" stroke-width="5"/><path d="M2 38H46L42 47H6Z" fill="#9E1515"/><path d="M8 92V68C8 62 14 58 24 58H186L262 68C284 71 296 78 296 86V92C296 97 292 100 286 100H18C12 100 8 97 8 92Z" fill="#D21F1F" stroke="#7A0D0D" stroke-width="3"/><path d="M186 58L170 32L158 58Z" fill="#9CC3E8" opacity=".75"/><path d="M186 58L170 32" stroke="#23313F" stroke-width="5" stroke-linecap="round"/><rect x="112" y="38" width="14" height="22" rx="5" fill="#3B2414"/><path d="M132 59c0-11 8-15 16-15s14 4 14 15z" fill="#fff"/><circle cx="150" cy="31" r="11" fill="#E0A77A"/><path d="M139 30c-1-12 17-15 22-5c-8-3-14-1-16 6z" fill="#3B2414"/><rect x="150" y="27" width="13" height="5" rx="2" fill="#111"/><path d="M152 37q4 3 8 0" fill="none" stroke="#7A3B1E" stroke-width="2" stroke-linecap="round"/><path d="M120 61V96M204 63V96" stroke="#7A0D0D" stroke-width="2"/><path d="M20 84H288" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/><path d="M282 76l12 5v6h-14z" fill="#FFE9A3"/><rect x="8" y="70" width="6" height="11" rx="2" fill="#FF9A9A"/><g class="av-roda"><circle cx="66" cy="100" r="20" fill="#151515"/><circle cx="66" cy="100" r="11" fill="#C9CED6"/><path d="M66 89V111M55 100H77" stroke="#7B828C" stroke-width="3"/></g><g class="av-roda"><circle cx="236" cy="100" r="20" fill="#151515"/><circle cx="236" cy="100" r="11" fill="#C9CED6"/><path d="M236 89V111M225 100H247" stroke="#7B828C" stroke-width="3"/></g><g class="av-braco"><path d="M150 52L158 2" stroke="#E0A77A" stroke-width="9" stroke-linecap="round"/><g transform="rotate(-5 158 -121)"><rect x="28" y="-232" width="260" height="222" rx="10" fill="#fff" stroke="#0B5F31" stroke-width="4"/><path d="M28 -222a10 10 0 0 1 10-10h240a10 10 0 0 1 10 10v30H28z" fill="#0E7A3E"/><text x="158" y="-201" font-size="19" fill="#fff" text-anchor="middle">LOTÉRICA DA AVENIDA</text><g class="sx-bola"><circle cx="93" cy="-156" r="27" fill="#0E7A3E"/><text x="93" y="-146" font-size="27" fill="#fff" text-anchor="middle">07</text></g><g class="sx-bola"><circle cx="158" cy="-156" r="27" fill="#0E7A3E"/><text x="158" y="-146" font-size="27" fill="#fff" text-anchor="middle">13</text></g><g class="sx-bola"><circle cx="223" cy="-156" r="27" fill="#0E7A3E"/><text x="223" y="-146" font-size="27" fill="#fff" text-anchor="middle">24</text></g><g class="sx-bola"><circle cx="93" cy="-92" r="27" fill="#0E7A3E"/><text x="93" y="-82" font-size="27" fill="#fff" text-anchor="middle">33</text></g><g class="sx-bola"><circle cx="158" cy="-92" r="27" fill="#0E7A3E"/><text x="158" y="-82" font-size="27" fill="#fff" text-anchor="middle">41</text></g><g class="sx-bola"><circle cx="223" cy="-92" r="27" fill="#0E7A3E"/><text x="223" y="-82" font-size="27" fill="#fff" text-anchor="middle">58</text></g><text class="sx-pd" x="158" y="-32" font-size="16" fill="#0B3D24" text-anchor="middle">PALPITE DO DIA</text></g><circle cx="158" cy="2" r="7" fill="#E0A77A"/><path class="av-br" d="M8.0 -249.0L11.2 -240.4L20.4 -240.0L13.2 -234.3L15.6 -225.5L8.0 -230.5L0.4 -225.5L2.8 -234.3L-4.4 -240.0L4.8 -240.4Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M306.0 -230.0L308.9 -222.0L317.4 -221.7L310.8 -216.5L313.1 -208.3L306.0 -213.0L298.9 -208.3L301.2 -216.5L294.6 -221.7L303.1 -222.0Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M312.0 -40.0L314.4 -33.2L321.5 -33.1L315.8 -28.8L317.9 -21.9L312.0 -26.0L306.1 -21.9L308.2 -28.8L302.5 -33.1L309.6 -33.2Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M10.0 -55.0L12.4 -49.2L18.6 -48.8L13.8 -44.8L15.3 -38.7L10.0 -42.0L4.7 -38.7L6.2 -44.8L1.4 -48.8L7.6 -49.2Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/></g><g class="av-bibi"><rect x="216" y="2" width="84" height="32" rx="16" fill="#fff" stroke="#14213D" stroke-width="2.5"/><path d="M262 34l6 10 4-10z" fill="#fff" stroke="#14213D" stroke-width="2.5" stroke-linejoin="round"/><text x="258" y="24" font-size="17" fill="#14213D" text-anchor="middle">Bi-bi!</text></g></g></g></g><g class="sx-dica"><rect x="10" y="-188" width="152" height="38" rx="19" fill="#fff" stroke="#163A8F" stroke-width="3"/><text class="sx-dt" x="86" y="-163" font-size="17" fill="#163A8F" text-anchor="middle">Toque aqui <tspan class="emo">🔊</tspan></text></g></svg></button>
+</section>
+<a class="desce" href="#boloes"><span>Acesse os bolões</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script>
+/* cena da avenida: a mesma do Loterias 24 Horas (toque = som + carro; palpite do dia no bilhete) */
+(function(){
+"use strict";
+var bt=document.getElementById("avn"); if(!bt)return;
+var svg=bt.querySelector("svg"), dt=svg.querySelector(".sx-dt");
+function mm(q){return !!(window.matchMedia&&window.matchMedia(q).matches);}
+if(dt&&mm("(hover: hover) and (pointer: fine)"))dt.textContent="Clique aqui!";
+var reduz=mm("(prefers-reduced-motion: reduce)");
+var au=new Audio(); au.preload="none"; au.src=bt.getAttribute("data-som");
+var liberado=false, somAuto=false, visivel=false, rodando=false, comSomAgora=false, fimT=0, DUR=9000;
+function anima(){
+  clearTimeout(fimT); svg.classList.remove("show"); void svg.getBoundingClientRect(); svg.classList.add("show"); rodando=true;
+  fimT=setTimeout(function(){svg.classList.remove("show");rodando=false;comSomAgora=false;},DUR+150);
+}
+function tocar(){
+  try{au.currentTime=0;}catch(e){}
+  var p; try{p=au.play();}catch(e){return Promise.resolve(false);}
+  if(!p||!p.then)return Promise.resolve(true);
+  return p.then(function(){liberado=true;return true;},function(){return false;});
+}
+function comSom(){
+  var foi=false; comSomAgora=true;
+  var t=setTimeout(function(){foi=true;anima();},1200);
+  tocar().then(function(ok){
+    if(!foi){clearTimeout(t);foi=true;anima();}
+    else if(ok){au.pause();}
+    if(!ok)comSomAgora=false;
+  });
+}
+bt.addEventListener("click",function(){somAuto=true;comSom();});
+function libera(e){
+  if(liberado||comSomAgora)return;
+  if(e&&e.target&&e.target.closest&&e.target.closest("#avn"))return;
+  var p; try{p=au.play();}catch(x){return;}
+  if(p&&p.then)p.then(function(){if(!comSomAgora){au.pause();try{au.currentTime=0;}catch(x){}}liberado=true;},function(){});
+}
+["click","touchend","keydown"].forEach(function(ev){document.addEventListener(ev,libera,true);});
+if("IntersectionObserver" in window){
+  var arma=function(){setTimeout(function(){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){au.preload="auto";try{au.load();}catch(x){}o.disconnect();}},{rootMargin:"700px"}).observe(bt);},2500);};
+  if(document.readyState==="complete")arma();else window.addEventListener("load",arma);
+  var primeira=true;
+  new IntersectionObserver(function(es){
+    visivel=es[0].isIntersecting;
+    if(!visivel||rodando||reduz)return;
+    var vai=function(){if(!visivel||rodando)return;if(liberado&&!somAuto){somAuto=true;comSom();}else anima();};
+    if(primeira){primeira=false;setTimeout(vai,3000);}else vai();
+  },{threshold:.6}).observe(bt);
+  if(!reduz)setInterval(function(){if(visivel&&!rodando&&!document.hidden)anima();},14000);
+}
+/* palpite do dia: o mesmo do Loterias 24 Horas (lista "palpites" do dados.json de lá); troca à meia-noite de Brasília */
+var PAL={"2026-11-26":[7,11,24,44,47,58],"2026-11-27":[4,10,17,21,27,52],"2026-11-28":[6,14,16,21,25,59],"2026-11-29":[7,11,20,48,53,56],"2026-11-30":[12,15,24,26,33,43],"2026-12-01":[17,19,26,31,44,54],"2026-12-02":[6,34,41,50,53,57],"2026-12-03":[12,17,22,30,37,49],"2026-12-04":[2,11,13,25,36,50],"2026-12-05":[14,23,36,39,43,46],"2026-12-06":[3,19,22,30,44,47],"2026-12-07":[10,12,17,27,40,59],"2026-12-08":[3,6,19,24,32,53],"2026-12-09":[23,30,32,37,52,55],"2026-12-10":[7,18,21,34,47,60],"2026-12-11":[4,6,15,36,41,59],"2026-12-12":[8,15,32,35,50,51],"2026-12-13":[10,13,18,26,41,51],"2026-12-14":[5,8,16,20,27,53],"2026-12-15":[3,14,35,44,47,54],"2026-12-16":[4,12,19,32,33,47],"2026-12-17":[3,16,28,33,47,52],"2026-12-18":[6,34,38,45,49,51],"2026-12-19":[5,13,14,24,28,37],"2026-12-20":[14,17,39,40,46,47],"2026-12-21":[6,9,13,20,28,35],"2026-12-22":[2,8,25,38,47,53],"2026-12-23":[16,23,28,40,47,59],"2026-12-24":[9,18,35,40,45,58],"2026-12-25":[10,29,44,45,57,60],"2026-12-26":[11,15,37,44,50,58],"2026-12-27":[4,21,30,38,51,57],"2026-12-28":[7,11,21,32,48,56],"2026-12-29":[18,19,26,35,42,59],"2026-12-30":[12,25,28,35,54,57],"2026-12-31":[5,18,22,43,52,57]}, diaAtual="";
+function hoje(){return new Date(Date.now()-108e5).toISOString().slice(0,10);}
+function z(x){return (x<10?"0":"")+x;}
+function regra(n){if(n.indexOf(1)>=0)return false;var p=0,l={};n.forEach(function(x){if(x%2===0)p++;var k=Math.floor((x-1)/10);l[k]=(l[k]||0)+1;});if(p!==3)return false;for(var k in l)if(l[k]>2)return false;return true;}
+function gera(dia){var s=parseInt(dia.replace(/-/g,""),10)>>>0;function r(){s=(s+0x6D2B79F5)>>>0;var t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;}
+  for(var k=0;k<5000;k++){var n=[];while(n.length<6){var v=1+Math.floor(r()*60);if(n.indexOf(v)<0)n.push(v);}n.sort(function(a,b){return a-b;});if(regra(n))return n;}return [7,13,24,33,41,58];}
+function aplica(){
+  var dia=hoje(); diaAtual=dia;
+  var n=(PAL&&PAL[dia])||gera(dia), p=dia.split("-");
+  var ts=svg.querySelectorAll(".sx-bola text"); for(var i=0;i<ts.length&&i<6;i++)ts[i].textContent=z(n[i]);
+  var pd=svg.querySelector(".sx-pd"); if(pd)pd.textContent="PALPITE DO DIA · "+p[2]+"/"+p[1];
+}
+window.palpiteDados=function(D){PAL=(D&&D.palpites)||null;aplica();};
+aplica();
+setInterval(function(){if(diaAtual&&hoje()!==diaAtual)aplica();},30000);
+})();
+</script>
 <div class="hero"><div class="w">
   <div>
     <div class="brand"><img src="logo.svg" width="52" height="52" alt="" style="display:block"><div><b>Lotérica da Avenida</b><small>Pirassununga/SP</small></div></div>
@@ -238,74 +313,6 @@ a:focus-visible{outline:3px solid #EE7B3D;outline-offset:3px}
 </section>
 </main>
 
-
-<section class="avn" aria-label="Avenida">
-<button class="avn-b" id="avn" type="button" data-som="avenida.mp3?v=2"><svg class="sx" viewBox="0 -200 600 530" role="img" aria-label="Cena da avenida: toque para o carro passar e sacar o bilhete com o palpite do dia" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sxled" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0H5M0 0V5" stroke="#06080C" stroke-width="1.7" opacity=".8"/></pattern></defs><rect x="0" y="-200" width="600" height="405" fill="#E6F0FF"/><circle cx="545" cy="42" r="24" fill="#FFD766"/><rect x="505" y="120" width="10" height="82" fill="#7A5230"/><circle cx="510" cy="104" r="34" fill="#178A47"/><circle cx="534" cy="122" r="22" fill="#1E9E55"/><rect x="150" y="40" width="300" height="162" rx="6" fill="#163A8F"/><rect x="160" y="50" width="280" height="42" rx="6" fill="#fff"/><text x="300" y="79" font-size="22" fill="#163A8F" text-anchor="middle">LOTÉRICA DA AVENIDA</text><path d="M150 100H450V114H150Z" fill="#EE7B3D"/><path d="M150 114H450V120H150Z" fill="#178A47"/><rect x="170" y="132" width="84" height="50" rx="4" fill="#DCE4F7"/><rect x="346" y="132" width="84" height="50" rx="4" fill="#DCE4F7"/><rect x="272" y="128" width="56" height="74" rx="4" fill="#EAF0FB"/><circle cx="318" cy="166" r="3.5" fill="#163A8F"/><g><rect x="192" y="-104" width="15" height="148" fill="#6B7280"/><rect x="393" y="-104" width="15" height="148" fill="#6B7280"/><rect x="186" y="36" width="27" height="10" rx="3" fill="#565C66"/><rect x="387" y="36" width="27" height="10" rx="3" fill="#565C66"/><rect x="140" y="-194" width="320" height="100" rx="9" fill="#1A1E26" stroke="#0A0D12" stroke-width="5"/><rect x="151" y="-185" width="298" height="74" rx="4" fill="#06080C"/><g class="sx-led1"><text x="300" y="-152" font-size="25" fill="#FFC53D" text-anchor="middle" letter-spacing="1.5">BOLÕES DA CAIXA</text><text x="300" y="-124" font-size="22" fill="#4DE08A" text-anchor="middle" letter-spacing="1.5">AQUI NA AVENIDA</text></g><g class="sx-led2"><text x="300" y="-152" font-size="25" fill="#FF5C5C" text-anchor="middle" letter-spacing="1.5">MEGA DA VIRADA</text><text x="300" y="-124" font-size="24" fill="#FFC53D" text-anchor="middle" letter-spacing="1.5">R$ 1 BILHÃO</text></g><rect x="151" y="-185" width="298" height="74" rx="4" fill="url(#sxled)"/><text x="300" y="-100" font-size="12" fill="#8A93A0" text-anchor="middle" letter-spacing="2">JC LED</text></g><rect x="66" y="74" width="7" height="130" fill="#6B7280"/><rect x="6" y="50" width="128" height="34" rx="6" fill="#0E7A3E"/><text x="70" y="73" font-size="15" fill="#fff" text-anchor="middle">Av. 6 de Agosto</text><rect y="200" width="600" height="24" fill="#D9D2C3"/><rect y="222" width="600" height="6" fill="#9AA3AE"/><rect y="228" width="600" height="102" fill="#3A3F47"/><path d="M0 300H58M542 300H600" stroke="#fff" stroke-width="5" stroke-dasharray="38 28"/><g><ellipse cx="300" cy="332" rx="252" ry="64" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="26 20" opacity=".85"/><ellipse cx="300" cy="332" rx="172" ry="42" fill="#D9D2C3" stroke="#9AA3AE" stroke-width="3"/><ellipse cx="300" cy="334" rx="156" ry="33" fill="#2E8B4F"/><g fill="#F5C842"><circle cx="246" cy="318" r="5"/><circle cx="300" cy="312" r="5"/><circle cx="354" cy="318" r="5"/></g><g fill="#E8667A"><circle cx="272" cy="326" r="4.5"/><circle cx="328" cy="326" r="4.5"/></g></g><g transform="translate(0 180)"><g class="av-carro"><path class="av-vento" d="M-78 58H-16M-104 76H-30M-66 92H-12" stroke="#fff" stroke-width="5" stroke-linecap="round"/><g class="av-fum" fill="#D5D9DF"><circle cx="-4" cy="90" r="9"/><circle cx="-22" cy="82" r="12"/><circle cx="-44" cy="74" r="15"/></g><g class="av-corpo"><path d="M22 66V44" stroke="#7A0D0D" stroke-width="5"/><path d="M2 38H46L42 47H6Z" fill="#9E1515"/><path d="M8 92V68C8 62 14 58 24 58H186L262 68C284 71 296 78 296 86V92C296 97 292 100 286 100H18C12 100 8 97 8 92Z" fill="#D21F1F" stroke="#7A0D0D" stroke-width="3"/><path d="M186 58L170 32L158 58Z" fill="#9CC3E8" opacity=".75"/><path d="M186 58L170 32" stroke="#23313F" stroke-width="5" stroke-linecap="round"/><rect x="112" y="38" width="14" height="22" rx="5" fill="#3B2414"/><path d="M132 59c0-11 8-15 16-15s14 4 14 15z" fill="#fff"/><circle cx="150" cy="31" r="11" fill="#E0A77A"/><path d="M139 30c-1-12 17-15 22-5c-8-3-14-1-16 6z" fill="#3B2414"/><rect x="150" y="27" width="13" height="5" rx="2" fill="#111"/><path d="M152 37q4 3 8 0" fill="none" stroke="#7A3B1E" stroke-width="2" stroke-linecap="round"/><path d="M120 61V96M204 63V96" stroke="#7A0D0D" stroke-width="2"/><path d="M20 84H288" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/><path d="M282 76l12 5v6h-14z" fill="#FFE9A3"/><rect x="8" y="70" width="6" height="11" rx="2" fill="#FF9A9A"/><g class="av-roda"><circle cx="66" cy="100" r="20" fill="#151515"/><circle cx="66" cy="100" r="11" fill="#C9CED6"/><path d="M66 89V111M55 100H77" stroke="#7B828C" stroke-width="3"/></g><g class="av-roda"><circle cx="236" cy="100" r="20" fill="#151515"/><circle cx="236" cy="100" r="11" fill="#C9CED6"/><path d="M236 89V111M225 100H247" stroke="#7B828C" stroke-width="3"/></g><g class="av-braco"><path d="M150 52L158 2" stroke="#E0A77A" stroke-width="9" stroke-linecap="round"/><g transform="rotate(-5 158 -121)"><rect x="28" y="-232" width="260" height="222" rx="10" fill="#fff" stroke="#0B5F31" stroke-width="4"/><path d="M28 -222a10 10 0 0 1 10-10h240a10 10 0 0 1 10 10v30H28z" fill="#0E7A3E"/><text x="158" y="-201" font-size="19" fill="#fff" text-anchor="middle">LOTÉRICA DA AVENIDA</text><g class="sx-bola"><circle cx="93" cy="-156" r="27" fill="#0E7A3E"/><text x="93" y="-146" font-size="27" fill="#fff" text-anchor="middle">07</text></g><g class="sx-bola"><circle cx="158" cy="-156" r="27" fill="#0E7A3E"/><text x="158" y="-146" font-size="27" fill="#fff" text-anchor="middle">13</text></g><g class="sx-bola"><circle cx="223" cy="-156" r="27" fill="#0E7A3E"/><text x="223" y="-146" font-size="27" fill="#fff" text-anchor="middle">24</text></g><g class="sx-bola"><circle cx="93" cy="-92" r="27" fill="#0E7A3E"/><text x="93" y="-82" font-size="27" fill="#fff" text-anchor="middle">33</text></g><g class="sx-bola"><circle cx="158" cy="-92" r="27" fill="#0E7A3E"/><text x="158" y="-82" font-size="27" fill="#fff" text-anchor="middle">41</text></g><g class="sx-bola"><circle cx="223" cy="-92" r="27" fill="#0E7A3E"/><text x="223" y="-82" font-size="27" fill="#fff" text-anchor="middle">58</text></g><text class="sx-pd" x="158" y="-32" font-size="16" fill="#0B3D24" text-anchor="middle">PALPITE DO DIA</text></g><circle cx="158" cy="2" r="7" fill="#E0A77A"/><path class="av-br" d="M8.0 -249.0L11.2 -240.4L20.4 -240.0L13.2 -234.3L15.6 -225.5L8.0 -230.5L0.4 -225.5L2.8 -234.3L-4.4 -240.0L4.8 -240.4Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M306.0 -230.0L308.9 -222.0L317.4 -221.7L310.8 -216.5L313.1 -208.3L306.0 -213.0L298.9 -208.3L301.2 -216.5L294.6 -221.7L303.1 -222.0Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M312.0 -40.0L314.4 -33.2L321.5 -33.1L315.8 -28.8L317.9 -21.9L312.0 -26.0L306.1 -21.9L308.2 -28.8L302.5 -33.1L309.6 -33.2Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/><path class="av-br" d="M10.0 -55.0L12.4 -49.2L18.6 -48.8L13.8 -44.8L15.3 -38.7L10.0 -42.0L4.7 -38.7L6.2 -44.8L1.4 -48.8L7.6 -49.2Z" fill="#F5C842" stroke="#C99A12" stroke-width="1.5"/></g><g class="av-bibi"><rect x="216" y="2" width="84" height="32" rx="16" fill="#fff" stroke="#14213D" stroke-width="2.5"/><path d="M262 34l6 10 4-10z" fill="#fff" stroke="#14213D" stroke-width="2.5" stroke-linejoin="round"/><text x="258" y="24" font-size="17" fill="#14213D" text-anchor="middle">Bi-bi!</text></g></g></g></g><g class="sx-dica"><rect x="6" y="-192" width="152" height="38" rx="19" fill="#fff" stroke="#163A8F" stroke-width="3"/><text class="sx-dt" x="82" y="-167" font-size="17" fill="#163A8F" text-anchor="middle">Toque aqui <tspan class="emo">🔊</tspan></text></g></svg></button>
-</section>
-<script>
-/* cena da avenida: a mesma do Loterias 24 Horas (toque = som + carro; palpite do dia no bilhete) */
-(function(){
-"use strict";
-var bt=document.getElementById("avn"); if(!bt)return;
-var svg=bt.querySelector("svg"), dt=svg.querySelector(".sx-dt");
-function mm(q){return !!(window.matchMedia&&window.matchMedia(q).matches);}
-if(dt&&mm("(hover: hover) and (pointer: fine)"))dt.textContent="Clique aqui!";
-var reduz=mm("(prefers-reduced-motion: reduce)");
-var au=new Audio(); au.preload="none"; au.src=bt.getAttribute("data-som");
-var liberado=false, somAuto=false, visivel=false, rodando=false, comSomAgora=false, fimT=0, DUR=9000;
-function anima(){
-  clearTimeout(fimT); svg.classList.remove("show"); void svg.getBoundingClientRect(); svg.classList.add("show"); rodando=true;
-  fimT=setTimeout(function(){svg.classList.remove("show");rodando=false;comSomAgora=false;},DUR+150);
-}
-function tocar(){
-  try{au.currentTime=0;}catch(e){}
-  var p; try{p=au.play();}catch(e){return Promise.resolve(false);}
-  if(!p||!p.then)return Promise.resolve(true);
-  return p.then(function(){liberado=true;return true;},function(){return false;});
-}
-function comSom(){
-  var foi=false; comSomAgora=true;
-  var t=setTimeout(function(){foi=true;anima();},1200);
-  tocar().then(function(ok){
-    if(!foi){clearTimeout(t);foi=true;anima();}
-    else if(ok){au.pause();}
-    if(!ok)comSomAgora=false;
-  });
-}
-bt.addEventListener("click",function(){somAuto=true;comSom();});
-function libera(e){
-  if(liberado||comSomAgora)return;
-  if(e&&e.target&&e.target.closest&&e.target.closest("#avn"))return;
-  var p; try{p=au.play();}catch(x){return;}
-  if(p&&p.then)p.then(function(){if(!comSomAgora){au.pause();try{au.currentTime=0;}catch(x){}}liberado=true;},function(){});
-}
-["click","touchend","keydown"].forEach(function(ev){document.addEventListener(ev,libera,true);});
-if("IntersectionObserver" in window){
-  new IntersectionObserver(function(es,o){if(es[0].isIntersecting){au.preload="auto";try{au.load();}catch(x){}o.disconnect();}},{rootMargin:"700px"}).observe(bt);
-  new IntersectionObserver(function(es){
-    visivel=es[0].isIntersecting;
-    if(visivel&&!rodando&&!reduz){if(liberado&&!somAuto){somAuto=true;comSom();}else anima();}
-  },{threshold:.6}).observe(bt);
-  if(!reduz)setInterval(function(){if(visivel&&!rodando&&!document.hidden)anima();},14000);
-}
-/* palpite do dia: o mesmo do Loterias 24 Horas (lista "palpites" do dados.json de lá); troca à meia-noite de Brasília */
-var PAL=null, diaAtual="";
-function hoje(){return new Date(Date.now()-108e5).toISOString().slice(0,10);}
-function z(x){return (x<10?"0":"")+x;}
-function regra(n){if(n.indexOf(1)>=0)return false;var p=0,l={};n.forEach(function(x){if(x%2===0)p++;var k=Math.floor((x-1)/10);l[k]=(l[k]||0)+1;});if(p!==3)return false;for(var k in l)if(l[k]>2)return false;return true;}
-function gera(dia){var s=parseInt(dia.replace(/-/g,""),10)>>>0;function r(){s=(s+0x6D2B79F5)>>>0;var t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;}
-  for(var k=0;k<5000;k++){var n=[];while(n.length<6){var v=1+Math.floor(r()*60);if(n.indexOf(v)<0)n.push(v);}n.sort(function(a,b){return a-b;});if(regra(n))return n;}return [7,13,24,33,41,58];}
-function aplica(){
-  var dia=hoje(); diaAtual=dia;
-  var n=(PAL&&PAL[dia])||gera(dia), p=dia.split("-");
-  var ts=svg.querySelectorAll(".sx-bola text"); for(var i=0;i<ts.length&&i<6;i++)ts[i].textContent=z(n[i]);
-  var pd=svg.querySelector(".sx-pd"); if(pd)pd.textContent="PALPITE DO DIA · "+p[2]+"/"+p[1];
-}
-window.palpiteDados=function(D){PAL=(D&&D.palpites)||null;aplica();};
-aplica();
-setInterval(function(){if(diaAtual&&hoje()!==diaAtual)aplica();},30000);
-})();
-</script>
 <footer><div class="w">
   <div><div class="n">Lotérica da Avenida</div><div>Vilela &amp; Granhani Ltda Me · código 21.001926-3</div><div>Av. 6 de Agosto, 14 · Pirassununga/SP</div><div>Seg a sex 8h–17h30 · Sáb 8h–12h</div>
   <div><a href="https://loterias24horas.com.br/">Bolões: loterias24horas.com.br</a> · <a href="https://www.instagram.com/lotoavenidapirassununga/">@lotoavenidapirassununga</a></div></div>
